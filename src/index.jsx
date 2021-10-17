@@ -4,10 +4,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from './modules';
 import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import ReduxThunk from 'redux-thunk';
+import rootReducer from './modules/index';
 
 const store = createStore(
   rootReducer,
