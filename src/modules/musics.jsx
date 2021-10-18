@@ -7,8 +7,8 @@ const GET_ALBUMS_ERROR = 'GET_ALBUMS_ERROR';
 export const getAlbums = () => async dispatch => {
   dispatch({type: GET_ALBUMS});
   try{
-    const albums = await getMusics();
-    dispatch({type: GET_ALBUMS_SUCCESS, albums});
+    const data = await getMusics();
+    dispatch({type: GET_ALBUMS_SUCCESS, data});
   }
   catch(e){
     dispatch({type: GET_ALBUMS_ERROR, error: e})
