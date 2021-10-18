@@ -1,22 +1,43 @@
-import { getMusics } from "../api/albums";
+import { getMusic, getMusics } from "../api/albums";
+
 
 const GET_ALBUMS = 'GET_ALBUMS';
 const GET_ALBUMS_SUCCESS = 'GET_ALBUMS_SUCCESS';
 const GET_ALBUMS_ERROR = 'GET_ALBUMS_ERROR';
 
+const GET_ALBUM = 'GET_ALBUM';
+const GET_ALBUM_SUCCESS = 'GET_ALBUM_SUCCESS';
+const GET_ALBUM_ERROR = 'GET_ALBUM_ERROR';
+
 export const getAlbums = () => async dispatch => {
   dispatch({type: GET_ALBUMS});
   try{
-    const data = await getMusics();
-    dispatch({type: GET_ALBUMS_SUCCESS, data});
+    const albums = await getMusics();
+    dispatch({type: GET_ALBUMS_SUCCESS, albums});
   }
   catch(e){
     dispatch({type: GET_ALBUMS_ERROR, error: e})
   }
 }
 
+export const getAlbum = (url) => async dispatch => {
+  dispatch({type: GET_ALBUM});
+  try{
+    const albums = await getMusic(url);
+    dispatch({type: GET_ALBUM_SUCCESS, albums});
+  }
+  catch(e){
+    dispatch({type: GET_ALBUM_ERROR, error: e})
+  }
+}
+
 const initialState = {
   albums: {
+    loading: false,
+    data: null,
+    error: null
+  },
+  album: {
     loading: false,
     data: null,
     error: null
@@ -39,7 +60,7 @@ export default function albums(state = initialState, action){
         ...state,
         albums: {
           loading: false,
-          data: action.data,
+          data: action.albums,
           error: null
         }
       }
@@ -47,6 +68,33 @@ export default function albums(state = initialState, action){
       return{
         ...state,
         albums: {
+          loading: false,
+          data: null,
+          error: action.error
+        }
+      }
+    case GET_ALBUM:
+      return{
+        ...state,
+        album: {
+          loading: true,
+          data: null,
+          error: null
+        }
+      }
+    case GET_ALBUM_SUCCESS:
+      return{
+        ...state,
+        album: {
+          loading: false,
+          data : action.album,
+          error: null
+        }
+      }
+    case GET_ALBUM_ERROR:
+      return{
+        ...state,
+        album: {
           loading: false,
           data: null,
           error: action.error
