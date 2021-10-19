@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getAlbums } from '../modules/musics';
+import  { getAlbums } from '../modules/musics';
 import MusicList from '../components/MusicList';
 import "../App.css";
 
@@ -12,7 +12,6 @@ export default function MusicListContainer() {
     dispatch(getAlbums())
   },[dispatch])
 
-  console.log(data)
   if(loading) return <div>로딩중</div>
   if(error) return <div className="errorMessageNoData">404</div>
   if(!data) return <div className="errorMessageNoData">텅</div>;
