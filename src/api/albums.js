@@ -6,11 +6,12 @@ export async function getMusics() {
     return response.data.topalbums.album
   }
   catch(e){
-    console.log(e)
+    console.log(e);
   }
 }
 
 export const getMusic = async(url) => {
-  const getData = await getMusic();
-  return getData.find(data => data.url === url);
+  const getData = await getMusics();
+    return getData.find(data => data.name === url);
+  // }
 }

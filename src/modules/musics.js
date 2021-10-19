@@ -1,6 +1,5 @@
 import { getMusic, getMusics } from "../api/albums";
 
-
 const GET_ALBUMS = 'GET_ALBUMS';
 const GET_ALBUMS_SUCCESS = 'GET_ALBUMS_SUCCESS';
 const GET_ALBUMS_ERROR = 'GET_ALBUMS_ERROR';
@@ -23,8 +22,8 @@ export const getAlbums = () => async dispatch => {
 export const getAlbum = (url) => async dispatch => {
   dispatch({type: GET_ALBUM});
   try{
-    const albums = await getMusic(url);
-    dispatch({type: GET_ALBUM_SUCCESS, albums});
+    const album = await getMusic(url);
+    dispatch({type: GET_ALBUM_SUCCESS, album});
   }
   catch(e){
     dispatch({type: GET_ALBUM_ERROR, error: e})

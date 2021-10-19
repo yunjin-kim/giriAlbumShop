@@ -1,7 +1,49 @@
 .App {
   text-align: center;
 }
+a {
+  color: black;
+}
+h2,
+h3 {
+  margin: 0;
+}
+a:link {
+  text-decoration: none;
+  color: black;
+}
 .albumWrap {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  text-align: center;
+}
+.detailPageWrap {
+  text-align: center;
+}
+.eachAlbumImg {
+  width: 300px;
+}
+.navBar {
+  height: 40px;
+  background-color: #4ac8f0;
+  margin-bottom: 6vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px 0px 10px;
+}
+.navTitle {
+  margin: 0;
+  cursor: pointer;
+}
+.cartBtn {
+  background-color: #4ac8f0;
+  border: none;
+  width: 300px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.errorMessageNoData {
+  font-size: 40rem;
 }
