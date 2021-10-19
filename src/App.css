@@ -45,5 +45,41 @@ a:link {
   cursor: pointer;
 }
 .errorMessageNoData {
-  font-size: 40rem;
+  font-size: 35rem;
+}
+/* .cartPayWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
+.cartAlbumImg {
+  width: 100px;
+}
+.cartEachAlbum {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.cartPay {
+  display: flex;
+  justify-content: space-around;
+  padding: 30px 0px;
+  border-top: 2px solid black;
+  border-bottom: 1px solid black;
+}
+.cartPayPrice {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 30px 0px;
+  border-bottom: 1px solid black;
+}
+.payBtn {
+  width: 240px;
+  height: 70px;
+  background-color: #4ac8f0;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-left: 40vw;
 }

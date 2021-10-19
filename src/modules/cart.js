@@ -1,5 +1,6 @@
 const ADD_ALBUM_CART = 'ADD_ALBUM_CART';
 const DELETE_ALBUM_CART = 'DELETE_ALBUM_CART';
+const TOGGLE_ALBUM_CART = 'TOGGLE_ALBUM_CART';
 
 export const addAlbumCart = (album) => ({
   type: ADD_ALBUM_CART,
@@ -11,9 +12,12 @@ export const deleteAlbumCart = (name) => ({
   name
 });
 
-const initialState = [];
+export const toggleAlbumCart = (name) => ({
+  type: TOGGLE_ALBUM_CART,
+  name
+})
 
-console.log(initialState)
+const initialState = [];
 
 export default function cart(state = initialState, action){
   switch(action.type){
@@ -23,6 +27,10 @@ export default function cart(state = initialState, action){
       return state.filter((album)=>(
         album.name === action.name
       ));
+    case TOGGLE_ALBUM_CART:
+      return state.map((album)=>(
+        album.name === action.name ? {...album, done: !album.done}: album
+      ))
     default:
       return state;
   }

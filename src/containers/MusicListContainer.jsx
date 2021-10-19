@@ -11,10 +11,11 @@ export default function MusicListContainer() {
   useEffect(()=>{
     dispatch(getAlbums())
   },[dispatch])
-
+  
+  console.log(data)
   if(loading) return <div>로딩중</div>
-  if(error) return <div className="errorMessageNoData">404</div>
-  if(!data) return <div className="errorMessageNoData">텅</div>;
+  if(error) return <div className="errorMessageNoData">404..</div>
+  if(!data) return <div className="errorMessageNoData">텅..</div>;
 
   return (
     <>

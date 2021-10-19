@@ -1,5 +1,4 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
 import '../App.css';
 
 export default function Music({album, onAddAlbum}) {
