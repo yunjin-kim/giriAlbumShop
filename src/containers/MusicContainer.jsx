@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Music from '../components/Music';
 import { getAlbum } from '../modules/musics';
-import { addAlbumCart, toggleAlbumCart } from '../modules/cart';
+import { addAlbumCart } from '../modules/cart';
 
 export default function MusicContainer({url}) {
   const { loading, data, error } = useSelector(state => state.albums.album);

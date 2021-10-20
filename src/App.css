@@ -18,7 +18,9 @@ a:link {
   text-align: center;
 }
 .detailPageWrap {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .eachAlbumImg {
   width: 300px;
@@ -82,4 +84,12 @@ a:link {
   font-weight: 600;
   margin-top: 40px;
   margin-left: 40vw;
+}
+.addCartModal {
+  width: 230px;
+  padding: 0px 10px;
+  height: 150px;
+  margin-top: 20px;
+  background-color: white;
+  border: 2px solid #4ac8f0;
 }
