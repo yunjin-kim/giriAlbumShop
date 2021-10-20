@@ -25,11 +25,11 @@ export default function cart(state = initialState, action){
       return state.concat(action.album);
     case DELETE_ALBUM_CART:
       return state.filter((album)=>(
-        album.name === action.name
+        album.name !== action.name
       ));
     case TOGGLE_ALBUM_CART:
       return state.map((album)=>(
-        album.name === action.name ? {...album, done: !album.done}: album
+        album.name === action.name ? {...album, click: !album.click}: album
       ))
     default:
       return state;
