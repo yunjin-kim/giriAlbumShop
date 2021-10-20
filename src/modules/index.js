@@ -4,15 +4,15 @@ import storage from 'redux-persist/lib/storage';
 import albums from "./musics";
 import cart from "./cart";
 
-// const persistConfig = {
-//   key: 'root',
-//   storage,
-//   whitelist: ["cart"]
-// }
+const persistConfig = {
+  key: 'cart',
+  storage,
+  whitelist: ["cart"]
+}
 
 const rootReducer = combineReducers({
   albums,
   cart
 });
-// persistConfig
-export default (rootReducer);
+
+export default persistReducer(persistConfig, rootReducer);

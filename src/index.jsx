@@ -17,14 +17,14 @@ const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(ReduxThunk, logger))
 )
-// const persistor = persistStore(store);
+const persistor = persistStore(store);
 
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
-      {/* <PersistGate loading={null} persistor={persistor} > */}
+      <PersistGate loading={null} persistor={persistor} >
         <App />
-      {/* </PersistGate> */}
+      </PersistGate>
     </Provider>
   </BrowserRouter>
 ,document.getElementById('root')
