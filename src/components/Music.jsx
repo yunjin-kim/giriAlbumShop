@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AddCartModal from './AddCartModal';
 import '../App.css';
 
@@ -13,6 +13,10 @@ export default function Music({album, onAddAlbum}) {
   setTimeout(()=>{
     setModal(false)
   },2000)
+
+  useEffect(()=>{
+    return () => setModal(false)
+  },[])
 
   return (
     <div className="detailPageWrap">

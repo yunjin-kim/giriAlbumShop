@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux';
 import "../App.css";
 
 export default function CartPay() {
-  const album = useSelector(state => state.cart);
+  const cartAlbum = useSelector(state => state.cart);
   //map에서 setState 쓰면 안 되는 듯?
   
-  let totalPrice = album.reduce((acc, cur)=>{
+  let totalPrice = cartAlbum.reduce((acc, cur)=>{
     return acc + cur.playcount*10;
   },0)
 

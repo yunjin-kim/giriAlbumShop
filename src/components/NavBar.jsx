@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../App.css';
 
 export default function NavBar() {
+  const cartAlbum = useSelector(state => state.cart);
+  
   return (
     <div className="navBar">
       <Link to="/">
@@ -11,6 +14,7 @@ export default function NavBar() {
         <h2>취미로히어로활동을하는사람입니다만?</h2>
       <Link to="/cart">
         <h3>장바구니</h3>
+        <p className="cartNum">{cartAlbum.length}</p>
       </Link>
         <h3>주문목록</h3>
     </div>
