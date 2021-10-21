@@ -6,7 +6,7 @@ import CartPayContainer from '../containers/CartPayContainer';
 
 export default function CartPage() {
   const album = useSelector(state => state.cart);
-  console.log(album)
+  // console.log(album)
 
   return (
     <>

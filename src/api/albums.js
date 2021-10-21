@@ -13,5 +13,4 @@ export async function getMusics() {
 export const getMusic = async(url) => {
   const getData = await getMusics();
     return getData.find(data => data.name === url);
-  // }
 }

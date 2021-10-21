@@ -26,7 +26,7 @@ export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum}) {
   }
   
   return (
-    <div>
+    <>
         {cartAlbum.map((album)=>(
           <div key={album.name} className="cartEachAlbum">
             <CartAblumToggle album={album} onToggleAlbum={onToggleAlbum} />
@@ -37,6 +37,6 @@ export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum}) {
             <button onClick={deleteCartAlbum}>X</button>
           </div>
         ))}
-    </div>
+    </>
   )
 }

@@ -84,6 +84,7 @@ a:link {
   font-weight: 600;
   margin-top: 40px;
   margin-left: 40vw;
+  cursor: pointer;
 }
 .addCartModal {
   width: 230px;
