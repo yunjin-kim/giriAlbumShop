@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
+import React from 'react'
 import "../App.css";
 
-export default function CartPay() {
-  const cartAlbum = useSelector(state => state.cart);
+export default function CartPay({cartAlbum}) {
   //map에서 setState 쓰면 안 되는 듯?
   
   let totalPrice = cartAlbum.reduce((acc, cur)=>{

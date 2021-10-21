@@ -1,8 +1,8 @@
 import React from 'react'
-import CartPay from '../components/CartPay'
 import CartContainer from '../containers/CartContainer'
 import "../App.css";
 import { useSelector } from 'react-redux';
+import CartPayContainer from '../containers/CartPayContainer';
 
 export default function CartPage() {
   const album = useSelector(state => state.cart);
@@ -13,7 +13,7 @@ export default function CartPage() {
       <CartContainer />
       {
         album.length > 0
-        ? <CartPay />
+        ? <CartPayContainer />
         : <div className="errorMessageNoData">텅..</div>
       }
       
