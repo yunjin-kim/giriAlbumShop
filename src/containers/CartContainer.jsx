@@ -5,23 +5,22 @@ import { toggleAlbumCart, deleteAlbumCart, increaseAlbumCart, decreaseAlbumCart 
 
 export default function CartContainer() {
   const cartAlbum = useSelector(state => state.cart);
-  const albumNumber = useSelector(state => state.cart);
   const dispatch = useDispatch();
 
   const onToggleAlbum = name => dispatch(toggleAlbumCart(name));
   const onDeleteAlbum = name => dispatch(deleteAlbumCart(name));
-  const onIncreaseAlbum = () => dispatch(increaseAlbumCart());
-  const onDecreaseAlbum = () => dispatch(decreaseAlbumCart());
+  const onIncreaseAlbum = (count) => dispatch(increaseAlbumCart(count));
+  const onDecreaseAlbum = (count) => dispatch(decreaseAlbumCart(count));
 
   return (
     <>
       <Cart 
         cartAlbum={cartAlbum} 
-        albumNumber={albumNumber}
         onToggleAlbum={onToggleAlbum} 
         onDeleteAlbum={onDeleteAlbum} 
         onIncreaseAlbum={onIncreaseAlbum}
-        onDecreaseAlbum={onDecreaseAlbum} />
+        onDecreaseAlbum={onDecreaseAlbum}
+        />
     </>
   )
 }

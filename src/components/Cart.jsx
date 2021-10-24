@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../App.css';
 
 const CartAblumToggle = ({album, onToggleAlbum}) => {
@@ -16,8 +16,7 @@ const CartAblumToggle = ({album, onToggleAlbum}) => {
   )
 }
 
-export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum, onIncreaseAlbum, onDecreaseAlbum, albumNumber}) {
-  console.log(albumNumber)
+export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum, onIncreaseAlbum, onDecreaseAlbum }) {
   if(cartAlbum === "") return <div className="errorMessageNoData">텅..</div>;
 
   //e.target 어쩌고저쩌고 대신 할 수 있는거 고민
@@ -26,9 +25,9 @@ export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum, onIncreas
   }
 
   const increaseAlbum = (e) => {
-    onIncreaseAlbum(e.target.parentNode.children[2].innerHTML)
+    onIncreaseAlbum(e.target.nextSibling.innerText)
   }
-
+  
   const decreaseAlbum = (e) => {
     onDecreaseAlbum(e.target.parentNode.children[2].innerHTML)
   }
@@ -41,8 +40,8 @@ export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum, onIncreas
             <img className="cartAlbumImg" src={album.image[2]['#text']} />
             <p>{album.name}</p>
             <p>{album.artist.name}</p>
-            <p>수량</p>
             <button onClick={increaseAlbum}>+</button>
+            <h1>0</h1>
             <button onClick={decreaseAlbum}>-</button>
             <p>가격: {album.playcount*10}원</p>
             <button onClick={deleteAlbum}>X</button>
