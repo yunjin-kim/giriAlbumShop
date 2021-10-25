@@ -4,10 +4,12 @@ import "../App.css";
 
 export default function CartPay({cartAlbum, onOrderAlbumCart}) {
   //map에서 setState 쓰면 안 되는 듯?
-  
-  let totalPrice = cartAlbum.reduce((acc, cur)=>{
-    return acc + cur.playcount*10;
-  },0)
+
+  let eachAlbumPrice = cartAlbum.map((album)=> {
+    return(album.album.playcount*10)*(album.count)
+  })
+
+  let totalAlbumPrice = eachAlbumPrice.reduce((a,b)=>a+b)
 
   const orderAlbumCart = () => {
     onOrderAlbumCart(cartAlbum)
@@ -21,11 +23,11 @@ export default function CartPay({cartAlbum, onOrderAlbumCart}) {
         <h2>총 결제 금액</h2>
       </div>
       <div className="cartPayPrice"> 
-        <h2>{totalPrice}원</h2>
+        <h2>{totalAlbumPrice}원</h2>
         <h2>+</h2>
         <h2>
           {
-            totalPrice > 20000
+            totalAlbumPrice > 50000
             ?  0
             :  2500
           }
@@ -34,9 +36,9 @@ export default function CartPay({cartAlbum, onOrderAlbumCart}) {
         <h2>=</h2>
         <h2>
           {
-            totalPrice > 20000
-            ?  totalPrice
-            :  totalPrice + 2500
+            totalAlbumPrice > 50000
+            ?  totalAlbumPrice
+            :  totalAlbumPrice + 2500
           }
           원
         </h2>

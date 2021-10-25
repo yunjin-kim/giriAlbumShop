@@ -39,21 +39,6 @@ const CartAlbumDecrease = ({album, onDecreaseAlbum}) => {
   )
 }
 
-// const CartAlbumNumber = ({album}) => {
-//   console.log("숫자좀 늘어나")
-//   console.log(album.count)
-
-//   return (
-//     <>
-//       <p>수량</p>
-//       <p>{album.count <= 1
-//           ? album.count = 1
-//           : album.count
-//         }
-//       </p>
-//     </>
-//   )
-// }
 
 export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum, onIncreaseAlbum, onDecreaseAlbum }) {
   if(cartAlbum === "") return <div className="errorMessageNoData">텅..</div>;
@@ -63,7 +48,6 @@ export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum, onIncreas
     onDeleteAlbum(e.target.parentNode.children[2].innerHTML)
   }
 
-  console.log(cartAlbum)
   
   return (
     <>
@@ -74,10 +58,11 @@ export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum, onIncreas
             <p>{album.album.name}</p>
             <p>{album.album.artist.name}</p>
             <CartAlbumIncrease album={album} onIncreaseAlbum={onIncreaseAlbum} />
-            {album.count}
-            {/* <CartAlbumNumber album={album} /> */}
+            {album.count <= 1 
+            ? album.count = 1
+            : album.count}
             <CartAlbumDecrease album={album} onDecreaseAlbum={onDecreaseAlbum} />
-            <p>가격: {album.playcount*10}원</p>
+            <p>가격: {album.album.playcount*10}원</p>
             <button onClick={deleteAlbum}>X</button>
           </div>
         ))}

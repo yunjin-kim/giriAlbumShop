@@ -2,11 +2,20 @@ import React, { useEffect, useState } from 'react'
 import AddCartModal from './AddCartModal';
 import '../App.css';
 
-export default function Music({album, onAddAlbum}) {
+export default function Music({album, onAddAlbum, cartAlbum}) {
   const [addModal, setModal] = useState(false)
 
   const addCart = () => {
-    onAddAlbum(album);
+    {
+      cartAlbum.length > 0 
+      ? cartAlbum.map((cartEachAlbum)=>(
+        cartEachAlbum.album.name === album.name 
+        ? cartEachAlbum.count++
+        : onAddAlbum(album)
+      ))
+      : onAddAlbum(album)
+    }
+    
     setModal(true);
   }
 
@@ -29,7 +38,6 @@ export default function Music({album, onAddAlbum}) {
         <AddCartModal />
         : null
       }
-      
     </div>
   )
 }

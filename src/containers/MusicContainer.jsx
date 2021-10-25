@@ -6,6 +6,7 @@ import { addAlbumCart } from '../modules/cart';
 
 export default function MusicContainer({url}) {
   const { loading, data, error } = useSelector(state => state.albums.album);
+  const cartAlbum = useSelector(state => state.cart);
   const dispatch = useDispatch();
 
   useEffect(()=>{
@@ -20,7 +21,7 @@ export default function MusicContainer({url}) {
 
   return (
     <>
-      <Music album={data} onAddAlbum={onAddAlbum} />
+      <Music album={data} onAddAlbum={onAddAlbum} cartAlbum={cartAlbum} />
     </>
   )
 }

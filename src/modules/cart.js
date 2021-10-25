@@ -38,12 +38,12 @@ export default function cart(state = initialState, action){
         ...state,
         {
           album: action.album,
-          count: 1
+          count: 1,
         }
       ]
     case DELETE_ALBUM_CART:
       return state.filter((album)=>(
-        album.name !== action.name
+        album.album.name !== action.name
       ));
     case TOGGLE_ALBUM_CART:
       return state.map((album)=>(
@@ -51,11 +51,11 @@ export default function cart(state = initialState, action){
       ))
     case INCREASE_ALBUM:
       return state.map((album)=>(
-        album.name === action.name ? {...album,count: album.count+=1} : album
+        album.name === action.name ? album.count : album
       ))
     case DECREASE_ALBUM:
       return state.map((album)=>(
-        album.name === action.name ? {...album,count: album.count-=1 } : album
+        album.name === action.name ? album.count : album
       ))
     default:
       return state;
