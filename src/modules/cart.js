@@ -19,14 +19,14 @@ export const toggleAlbumCart = (name) => ({
   name,
 })
 
-export const increaseAlbumCart = (count) => ({
+export const increaseAlbumCart = (name) => ({
   type: INCREASE_ALBUM,
-  count
+  name
 })
 
-export const decreaseAlbumCart = (count) => ({
+export const decreaseAlbumCart = (name) => ({
   type: DECREASE_ALBUM,
-  count
+  name
 })
 
 const initialState = [];
@@ -34,10 +34,13 @@ const initialState = [];
 export default function cart(state = initialState, action){
   switch(action.type){
     case ADD_ALBUM_CART:
-      return state.concat(action.album)
-      //  state.map((album)=>(
-        // !state ? (album.name === action.album.name ? "" : state.concat(action.album) ) : state.concat(action.album)
-      // ))
+      return [
+        ...state,
+        {
+          album: action.album,
+          count: 1
+        }
+      ]
     case DELETE_ALBUM_CART:
       return state.filter((album)=>(
         album.name !== action.name
@@ -47,11 +50,13 @@ export default function cart(state = initialState, action){
         album.name === action.name ? {...album, click: !album.click}: album
       ))
     case INCREASE_ALBUM:
-      return state.map((cart)=>(
-        cart.name === action ? action.count+1 : ""
+      return state.map((album)=>(
+        album.name === action.name ? {...album,count: album.count+=1} : album
       ))
     case DECREASE_ALBUM:
-      return state.count - 1
+      return state.map((album)=>(
+        album.name === action.name ? {...album,count: album.count-=1 } : album
+      ))
     default:
       return state;
   }
