@@ -8,8 +8,6 @@ export default function CartPayContainer() {
   const dispatch = useDispatch();
 
   const onOrderAlbumCart = (cart) => dispatch(orderAlbumCart(cart));
-
-  console.log(cartAlbum)
   
   return (
     <>

@@ -16,7 +16,7 @@ const CartAlbumToggle = ({album, onToggleAlbum}) => {
 }
 
 const CartAlbumIncrease = ({album, onIncreaseAlbum}) => {
-  console.log(album.count)
+  
   const increaseAlbum = () => {
     onIncreaseAlbum(album.album.name);
     album.count += 1;
@@ -28,7 +28,7 @@ const CartAlbumIncrease = ({album, onIncreaseAlbum}) => {
 }
 
 const CartAlbumDecrease = ({album, onDecreaseAlbum}) => {
-  console.log(album.count)
+  
   const decreaseAlbum = () => {
     onDecreaseAlbum(album.album.name);
     album.count -= 1;
@@ -51,18 +51,18 @@ export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum, onIncreas
   
   return (
     <>
-        {cartAlbum.map((album)=>(
-          <div key={album.album.name} className="cartEachAlbum">
-            <CartAlbumToggle album={album} onToggleAlbum={onToggleAlbum} />
-            <img className="cartAlbumImg" src={album.album.image[2]['#text']} />
-            <p>{album.album.name}</p>
-            <p>{album.album.artist.name}</p>
-            <CartAlbumIncrease album={album} onIncreaseAlbum={onIncreaseAlbum} />
-            {album.count <= 1 
-            ? album.count = 1
-            : album.count}
-            <CartAlbumDecrease album={album} onDecreaseAlbum={onDecreaseAlbum} />
-            <p>가격: {album.album.playcount*10}원</p>
+        {cartAlbum.map((cartEachAlbum)=>(
+          <div key={cartEachAlbum.album.name} className="cartEachAlbum">
+            <CartAlbumToggle album={cartEachAlbum} onToggleAlbum={onToggleAlbum} />
+            <img className="cartAlbumImg" src={cartEachAlbum.album.image[2]['#text']} />
+            <p>{cartEachAlbum.album.name}</p>
+            <p>{cartEachAlbum.album.artist.name}</p>
+            <CartAlbumIncrease album={cartEachAlbum} onIncreaseAlbum={onIncreaseAlbum} />
+            {cartEachAlbum.count <= 1 
+            ? cartEachAlbum.count = 1
+            : cartEachAlbum.count}
+            <CartAlbumDecrease album={cartEachAlbum} onDecreaseAlbum={onDecreaseAlbum} />
+            <p>가격: {cartEachAlbum.album.playcount*10}원</p>
             <button onClick={deleteAlbum}>X</button>
           </div>
         ))}

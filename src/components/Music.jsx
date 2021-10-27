@@ -3,28 +3,26 @@ import AddCartModal from './AddCartModal';
 import '../App.css';
 
 export default function Music({album, onAddAlbum, cartAlbum}) {
-  const [addModal, setModal] = useState(false)
+  const [addModal, setAddModal] = useState(false)
 
   const addCart = () => {
-    {
-      cartAlbum.length > 0 
-      ? cartAlbum.map((cartEachAlbum)=>(
-        cartEachAlbum.album.name === album.name 
-        ? cartEachAlbum.count++
-        : onAddAlbum(album)
-      ))
-      : onAddAlbum(album)
-    }
-    
-    setModal(true);
+
+    setAddModal(true);
+
+    return cartAlbum.length <= 0 
+      ?  onAddAlbum(album)
+      : cartAlbum.find((cartEachAlbum)=>(
+          cartEachAlbum.album.name === album.name))
+          ?  null
+          : onAddAlbum(album);
   }
 
   setTimeout(()=>{
-    setModal(false)
+    setAddModal(false)
   },2000)
 
   useEffect(()=>{
-    return () => setModal(false)
+    return () => setAddModal(false)
   },[])
 
   return (
