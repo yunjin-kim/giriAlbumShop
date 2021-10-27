@@ -4,6 +4,7 @@ import CartPage from './pages/CartPage';
 import MusicPage from './pages/MusicPage';
 import MusiucListPage from './pages/MusiucListPage';
 import OrderPage from './pages/OrderPage';
+import PayPage from './pages/PayPage';
 
 function App() {
   console.log("App")
@@ -16,6 +17,7 @@ function App() {
       <Route path="/:url" component={MusicPage} />
       <Route path="/cart" component={CartPage} />
       <Route path="/order" component={OrderPage} />
+      <Route path="/pay" component={PayPage} />
     </>
   );
 }

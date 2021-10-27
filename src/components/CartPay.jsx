@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import "../App.css";
 
 export default function CartPay({cartAlbum, onOrderAlbumCart}) {
-  //map에서 setState 쓰면 안 되는 듯?
-
   let eachAlbumPrice = cartAlbum.map((album)=> {
     return(album.album.playcount*10)*(album.count)
   })

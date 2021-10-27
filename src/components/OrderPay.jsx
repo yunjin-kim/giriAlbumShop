@@ -1,12 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import "../App.css";
 
-export default function OrderPay({orderAlbum}) {
+export default function OrderPay({orderAlbum, onPayAlbumCart}) {
+  let payAlbumPrice = orderAlbum.map((album)=> {
+    return(album.album.playcount*10)*(album.count)
+  })
 
-  let orderPrice = orderAlbum.reduce((acc, cur)=>{
-    return acc + cur.playcount*10;
-  },0)
+  let totalPayAlbumPrice = payAlbumPrice.reduce((a,b)=>a+b)
 
+  console.log(orderAlbum)
+  const payAlbumCart = () => {
+    onPayAlbumCart(orderAlbum)
+  }
 
   return (
     <div className="cartPayWrap">
@@ -16,14 +22,16 @@ export default function OrderPay({orderAlbum}) {
       <div className="cartPayPrice"> 
         <h2>
           {
-            orderPrice > 20000
-            ?  orderPrice
-            :  orderPrice + 2500
+            totalPayAlbumPrice > 50000
+            ?  totalPayAlbumPrice
+            :  totalPayAlbumPrice + 2500
           }
           원
         </h2>
       </div>
-        <button className="payBtn">결제하기</button>
+      <Link to="/pay">
+        <button className="payBtn" onClick={payAlbumCart}>결제하기</button>
+      </Link>
     </div>
   )
 }

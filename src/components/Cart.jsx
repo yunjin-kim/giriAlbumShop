@@ -16,7 +16,6 @@ const CartAlbumToggle = ({album, onToggleAlbum}) => {
 }
 
 const CartAlbumIncrease = ({album, onIncreaseAlbum}) => {
-  
   const increaseAlbum = () => {
     onIncreaseAlbum(album.album.name);
     album.count += 1;
@@ -28,7 +27,6 @@ const CartAlbumIncrease = ({album, onIncreaseAlbum}) => {
 }
 
 const CartAlbumDecrease = ({album, onDecreaseAlbum}) => {
-  
   const decreaseAlbum = () => {
     onDecreaseAlbum(album.album.name);
     album.count -= 1;
@@ -51,20 +49,21 @@ export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum, onIncreas
   
   return (
     <>
-        {cartAlbum.map((cartEachAlbum)=>(
-          <div key={cartEachAlbum.album.name} className="cartEachAlbum">
-            <CartAlbumToggle album={cartEachAlbum} onToggleAlbum={onToggleAlbum} />
-            <img className="cartAlbumImg" src={cartEachAlbum.album.image[2]['#text']} />
-            <p>{cartEachAlbum.album.name}</p>
-            <p>{cartEachAlbum.album.artist.name}</p>
-            <CartAlbumIncrease album={cartEachAlbum} onIncreaseAlbum={onIncreaseAlbum} />
-            {cartEachAlbum.count <= 1 
-            ? cartEachAlbum.count = 1
-            : cartEachAlbum.count}
-            <CartAlbumDecrease album={cartEachAlbum} onDecreaseAlbum={onDecreaseAlbum} />
-            <p>가격: {cartEachAlbum.album.playcount*10}원</p>
-            <button onClick={deleteAlbum}>X</button>
-          </div>
+      <h2 className="cartList">장바구니</h2>
+      {cartAlbum.map((cartEachAlbum)=>(
+        <div key={cartEachAlbum.album.name} className="cartEachAlbum">
+          <CartAlbumToggle album={cartEachAlbum} onToggleAlbum={onToggleAlbum} />
+          <img className="cartAlbumImg" src={cartEachAlbum.album.image[2]['#text']} />
+          <p>{cartEachAlbum.album.name}</p>
+          <p>{cartEachAlbum.album.artist.name}</p>
+          <CartAlbumIncrease album={cartEachAlbum} onIncreaseAlbum={onIncreaseAlbum} />
+          {cartEachAlbum.count <= 1 
+          ? cartEachAlbum.count = 1
+          : cartEachAlbum.count}
+          <CartAlbumDecrease album={cartEachAlbum} onDecreaseAlbum={onDecreaseAlbum} />
+          <p>가격: {cartEachAlbum.album.playcount*10}원</p>
+          <button onClick={deleteAlbum}>X</button>
+        </div>
         ))}
     </>
   )

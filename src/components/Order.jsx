@@ -1,18 +1,26 @@
 import React from 'react'
 import "../App.css";
 
+// 주문하기 클랙하면 장바구니 목록 겹치는 문제
+//주문몰록 페이지에서 벗어나면 주문목록이 초기화 되는 형식으로
+
 export default function Order({orderList}) {
-  console.log("왜 두번 실행?")
-  console.log(orderList)
+  let orderAlbumPrice = orderList.map((album)=> {
+    return(album.album.playcount*10)*(album.count)
+  })
+
+  let totalOrderAlbumPrice = orderAlbumPrice.reduce((a,b)=>a+b)
 
   return (
-    <>
+    <> 
+      <h2 className="orderList">주문 목록</h2>
       {orderList.map((order)=>(
-        <div key={order.name} className="cartEachAlbum">
-          <img className="cartAlbumImg" src={order.image[2]['#text']} />
-          <p>{order.name}</p>
-          <p>{order.artist.name}</p>
-          <p>가격: {order.playcount*10}원</p>
+        <div key={order.album.name} className="cartEachAlbum">
+          <img className="cartAlbumImg" src={order.album.image[2]['#text']} />
+          <p>{order.album.name}</p>
+          <p>{order.album.artist.name}</p>
+          <p>{order.count}개</p>
+          <p>가격: {totalOrderAlbumPrice}원</p>
         </div>
       ))}
     </>

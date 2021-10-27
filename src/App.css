@@ -101,3 +101,10 @@ a:link {
   color: red;
   font-weight: 900;
 }
+.orderList,
+.cartList,
+.payList {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
