@@ -3,7 +3,7 @@ import React from 'react'
 
 
 export default function Pay({payAlbum}) {
-  if(!payAlbum) return <div className="errorMessageNoData">텅..</div>;
+  if(!payAlbum || payAlbum.length === 0) return <div className="errorMessageNoData">텅..</div>;
 
   console.log(payAlbum)
 

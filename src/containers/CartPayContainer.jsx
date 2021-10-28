@@ -7,7 +7,7 @@ export default function CartPayContainer() {
   const cartAlbum = useSelector(state => state.cart);
   const dispatch = useDispatch();
 
-  const onOrderAlbumCart = (cart) => dispatch(orderAlbumCart(cart));
+  const onOrderAlbumCart = (order) => dispatch(orderAlbumCart(order));
   
   return (
     <>

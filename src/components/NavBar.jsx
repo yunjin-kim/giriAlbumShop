@@ -17,7 +17,7 @@ export default function NavBar() {
         <p className="cartNum">{cartAlbum.length}</p>
       </Link>
       <Link to="/pay">
-        <h3>주문목록</h3>
+        <h3>결제목록</h3>
       </Link>
     </div>
   )

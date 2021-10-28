@@ -5,8 +5,8 @@ import "../App.css";
 //주문몰록 페이지에서 벗어나면 주문목록이 초기화 되는 형식으로
 
 export default function Order({orderList}) {
-  let orderAlbumPrice = orderList.map((album)=> {
-    return(album.album.playcount*10)*(album.count)
+  let orderAlbumPrice = orderList.map((order)=> {
+    return (order.album.playcount*10)*(order.count);
   })
 
   let totalOrderAlbumPrice = orderAlbumPrice.reduce((a,b)=>a+b)

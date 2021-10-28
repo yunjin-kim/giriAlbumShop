@@ -9,7 +9,7 @@ import pay from './pay';
 const persistConfig = {
   key: 'cart',
   storage,
-  whitelist: ["cart"]
+  whitelist: ["cart"],
 }
 
 const rootReducer = combineReducers({
