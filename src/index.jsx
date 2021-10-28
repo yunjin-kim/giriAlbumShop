@@ -17,7 +17,8 @@ const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(ReduxThunk, logger))
 )
-const persistor = persistStore(store);
+
+export const persistor = persistStore(store);
 
 ReactDOM.render(
   <BrowserRouter>

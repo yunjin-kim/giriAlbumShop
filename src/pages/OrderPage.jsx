@@ -10,7 +10,6 @@ export default function OrderPage({history}) {
 
   useEffect(()=>{
     return () => {
-      console.log("~~~~주문 페이지 떠나기")
       onLeaveOrderPage();
     }
   },[history])

@@ -9,14 +9,15 @@ import pay from './pay';
 const persistConfig = {
   key: 'cart',
   storage,
-  whitelist: ["cart"],
+  whitelist: ["cart", "pay"],
 }
+
 
 const rootReducer = combineReducers({
   albums,
   cart,
   order,
-  pay
+  pay,
 });
 
 export default persistReducer(persistConfig, rootReducer);

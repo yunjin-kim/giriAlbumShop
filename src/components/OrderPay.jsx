@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { persistor } from '../index';
 import "../App.css";
 
 export default function OrderPay({orderAlbum, onPayAlbumCart}) {
@@ -9,9 +10,10 @@ export default function OrderPay({orderAlbum, onPayAlbumCart}) {
 
   let totalPayAlbumPrice = payAlbumPrice.reduce((a,b)=>a+b)
 
-  console.log(orderAlbum)
   const payAlbumCart = () => {
     onPayAlbumCart(orderAlbum)
+    persistor.purge('cart');
+    
   }
 
   return (
