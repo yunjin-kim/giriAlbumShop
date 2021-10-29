@@ -10,7 +10,9 @@ export default function OrderPay({orderAlbum, onPayAlbumCart}) {
 
   let totalPayAlbumPrice = payAlbumPrice.reduce((a,b)=>a+b)
 
+
   const payAlbumCart = () => {
+    console.log(orderAlbum)
     onPayAlbumCart(orderAlbum)
     persistor.purge('cart');
     

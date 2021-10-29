@@ -1,17 +1,23 @@
 import React from 'react'
 
+export default function Pay({payAlbums}) {
+  const date = new Date;
+  const dateArr = ['월','화','수','목','금','토','일'];
 
-
-export default function Pay({payAlbum}) {
-  if(!payAlbum || payAlbum.length === 0) return <div className="errorMessageNoData">텅..</div>;
-
-  console.log(payAlbum)
+  if(!payAlbums || payAlbums.length === 0) return <div className="errorMessageNoData">텅..</div>;
 
   return (
     <>
       <h1 className="payList">결제 목록</h1>
-      {payAlbum.map((pay)=>(
+      {payAlbums.map((pay)=>(
         <div key={pay.album.name} className="cartEachAlbum">
+          <div>
+            <p>{date.getMonth()}월</p>
+            <p>{date.getDate()}일</p>
+            <p>{dateArr[date.getDay()-1]}요일</p>
+            <p>{date.getHours()}시</p>
+            <p>{date.getMinutes()}분</p>
+          </div>
           <img className="cartAlbumImg" src={pay.album.image[2]['#text']} />
           <p>{pay.album.name}</p>
           <p>{pay.album.artist.name}</p>
