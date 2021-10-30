@@ -16,8 +16,11 @@ export default function Pay({payAlbums}){
             <p>{pay.album.name}</p>
             <p>{pay.album.artist.name}</p>
           </div>
-          {/* <div className="payDate">
-          </div> */}
+          <div className="payDate">
+            {pay.date.year}.
+            {pay.date.month}.
+            {pay.date.date}
+          </div>
           <div className="payPrice">
             <p>가격: {(pay.album.playcount*10)*(pay.count)}원</p>
             <p>{pay.count}개</p>

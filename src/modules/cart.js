@@ -42,7 +42,11 @@ export default function cart(state = initialState, action){
         {
           album: action.album,
           count: 1,
-          date: "",
+          date: {
+            "year": "",
+            "month": "",
+            "date": "",
+          },
         }
       ]
     case DELETE_ALBUM_CART:

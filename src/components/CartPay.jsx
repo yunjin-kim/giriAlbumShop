@@ -11,8 +11,11 @@ export default function CartPay({cartAlbum, onOrderAlbumCart}) {
   let totalAlbumPrice = eachAlbumPrice.reduce((a,b)=>a+b)
 
   const orderAlbumCart = () => {
-    console.log(cartAlbum)
-    cartAlbum[0].date = date.getMinutes();//앨범에 시간 넣어주기
+    cartAlbum.map((album)=>(
+      album.date.year = date.getFullYear(),
+      album.date.month = date.getMonth()+1,
+      album.date.date = date.getDate()
+    ))
     onOrderAlbumCart(cartAlbum)
   }
 
