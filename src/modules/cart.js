@@ -9,12 +9,12 @@ const DECREASE_ALBUM = 'DECREASE_ALBUM';
 
 export const addAlbumCart = (album) => ({
   type: ADD_ALBUM_CART,
-  album
+  album,
 });
 
 export const deleteAlbumCart = (name) => ({
   type: DELETE_ALBUM_CART,
-  name
+  name,
 });
 
 export const toggleAlbumCart = (name) => ({
@@ -24,12 +24,12 @@ export const toggleAlbumCart = (name) => ({
 
 export const increaseAlbumCart = (name) => ({
   type: INCREASE_ALBUM,
-  name
+  name,
 })
 
 export const decreaseAlbumCart = (name) => ({
   type: DECREASE_ALBUM,
-  name
+  name,
 })
 
 const initialState = [];
@@ -47,6 +47,7 @@ export default function cart(state = initialState, action){
             "month": "",
             "date": "",
           },
+          check: false,
         }
       ]
     case DELETE_ALBUM_CART:
@@ -55,7 +56,7 @@ export default function cart(state = initialState, action){
       ));
     case TOGGLE_ALBUM_CART:
       return state.map((album)=>(
-        album.name === action.name ? {...album, click: !album.click}: album
+        album.name === action.name ? {...album, check: !album.check}: album
       ))
     case INCREASE_ALBUM:
       return state.map((album)=>(

@@ -2,16 +2,18 @@ import React from 'react'
 import '../App.css';
 
 const CartAlbumToggle = ({album, onToggleAlbum}) => {
+
+  console.log("토글토글해")
+  console.log(album)
+  
   const toggleCartAlbum = () => {
     onToggleAlbum(album.name)
   }
 
   return(
-    album.click 
-    ? 
-    <button onClick={toggleCartAlbum}></button>
-    :
-    <button onClick={toggleCartAlbum}>V</button>
+      album.check
+      ? <input type="checkbox" onClick={toggleCartAlbum}  />
+      : <input type="checkbox" onClick={toggleCartAlbum} defaultChecked />
   )
 }
 
