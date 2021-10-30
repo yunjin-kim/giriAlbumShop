@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import "../App.css";
 
 export default function CartPay({cartAlbum, onOrderAlbumCart}) {
+  const date = new Date;
   let eachAlbumPrice = cartAlbum.map((album)=> {
     return(album.album.playcount*10)*(album.count)
   })
@@ -10,6 +11,8 @@ export default function CartPay({cartAlbum, onOrderAlbumCart}) {
   let totalAlbumPrice = eachAlbumPrice.reduce((a,b)=>a+b)
 
   const orderAlbumCart = () => {
+    console.log(cartAlbum)
+    cartAlbum[0].date = date.getMinutes();//앨범에 시간 넣어주기
     onOrderAlbumCart(cartAlbum)
   }
 

@@ -4,18 +4,16 @@ import { persistor } from '../index';
 import "../App.css";
 
 export default function OrderPay({orderAlbum, onPayAlbumCart}) {
+  
   let payAlbumPrice = orderAlbum.map((album)=> {
     return(album.album.playcount*10)*(album.count)
   })
 
-  let totalPayAlbumPrice = payAlbumPrice.reduce((a,b)=>a+b)
-
+  let totalPayAlbumPrice = payAlbumPrice.reduce((a,b)=>a+b);
 
   const payAlbumCart = () => {
-    console.log(orderAlbum)
     onPayAlbumCart(orderAlbum)
     persistor.purge('cart');
-    
   }
 
   return (

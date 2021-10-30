@@ -11,6 +11,8 @@ export default function CartContainer() {
   const onDeleteAlbum = name => dispatch(deleteAlbumCart(name));
   const onIncreaseAlbum = (count) => dispatch(increaseAlbumCart(count));
   const onDecreaseAlbum = (count) => dispatch(decreaseAlbumCart(count));
+
+  console.log(cartAlbum)
   
   return (
     <>
