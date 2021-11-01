@@ -5,6 +5,7 @@ import albums from "./musics";
 import cart from "./cart";
 import order from "./order";
 import pay from './pay';
+import search from './search';
 
 const persistConfig = {
   key: 'cart',
@@ -12,12 +13,12 @@ const persistConfig = {
   whitelist: ["cart", "pay"],
 }
 
-
 const rootReducer = combineReducers({
   albums,
   cart,
   order,
   pay,
+  search,
 });
 
 export default persistReducer(persistConfig, rootReducer);

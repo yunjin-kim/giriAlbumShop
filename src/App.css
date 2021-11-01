@@ -49,11 +49,6 @@ a:link {
 .errorMessageNoData {
   font-size: 35rem;
 }
-/* .cartPayWrap {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-} */
 .cartAlbumImg {
   width: 100px;
 }
@@ -116,4 +111,15 @@ a:link {
 .payAlbumInfo {
   display: flex;
   flex-direction: column;
+}
+.searchInput {
+  width: 30vw;
+  border: none;
+  border-bottom: 3px solid black;
+  margin: auto;
+}
+.searchBtn {
+  border: none;
+  background-color: none;
+  margin: auto;
 }

@@ -50,7 +50,7 @@ export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum, onIncreas
       {cartAlbum.map((cartEachAlbum)=>(
         <div key={cartEachAlbum.album.name} className="cartEachAlbum">
           <CartAlbumToggle album={cartEachAlbum} onToggleAlbum={onToggleAlbum} />
-          <img className="cartAlbumImg" src={cartEachAlbum.album.image[2]['#text']} />
+          <img className="cartAlbumImg" src={cartEachAlbum.album.image[2]['#text']} alt="앨범 이미지" />
           <p>{cartEachAlbum.album.name}</p>
           <p>{cartEachAlbum.album.artist.name}</p>
           <CartAlbumIncrease album={cartEachAlbum} onIncreaseAlbum={onIncreaseAlbum} />

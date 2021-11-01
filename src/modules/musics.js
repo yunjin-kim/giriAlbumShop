@@ -19,10 +19,10 @@ export const getAlbums = () => async dispatch => {
   }
 }
 
-export const getAlbum = (url) => async dispatch => {
+export const getAlbum = (name) => async dispatch => {
   dispatch({type: GET_ALBUM});
   try{
-    const album = await getMusic(url);
+    const album = await getMusic(name);
     dispatch({type: GET_ALBUM_SUCCESS, album});
   }
   catch(e){

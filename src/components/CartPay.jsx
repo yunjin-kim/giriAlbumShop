@@ -4,7 +4,7 @@ import { filter, go, map, reduce } from '../fx';
 import "../App.css";
 
 export default function CartPay({cartAlbum, onOrderAlbumCart}) {
-  const date = new Date;
+  const date = new Date();
   
   let totalCartPrice = go(
     reduce((a,b) => a + b,

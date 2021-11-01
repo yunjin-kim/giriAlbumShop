@@ -1,7 +1,5 @@
 const PAY_ALBUM_CART = 'PAY_ALBUM_CART';
 
-const date = new Date;
-
 export const payAlbumCart = (pay) => ({
   type: PAY_ALBUM_CART,
   pay
@@ -17,11 +15,3 @@ export default function pay(state = initialState, action){
       return state;
   }
 }
-
-// [
-//   date.getFullYear(),
-//   date.getMonth(),
-//   date.getDate(),
-//   date.getHours(),
-//   date.getMinutes()
-// ]
