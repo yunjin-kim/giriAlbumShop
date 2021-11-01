@@ -6,13 +6,14 @@ import { leaveOrderPage } from '../modules/order';
 
 export default function OrderPage({history}) {
   const dispatch = useDispatch();
-  const onLeaveOrderPage = () => dispatch(leaveOrderPage());
 
   useEffect(() => {
+    const onLeaveOrderPage = () => dispatch(leaveOrderPage());
+    
     return () => {
       onLeaveOrderPage();
     }
-  },[history])
+  },[dispatch, history])
 
   return (
     <>

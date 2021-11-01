@@ -6,7 +6,6 @@ export default function Music({album, onAddAlbum, cartAlbum}) {
   const [addModal, setAddModal] = useState(false)
 
   const addCart = () => {
-
     setAddModal(true);
 
     return cartAlbum.length <= 0 
@@ -17,11 +16,11 @@ export default function Music({album, onAddAlbum, cartAlbum}) {
           : onAddAlbum(album);
   }
 
-  setTimeout(()=>{
+  setTimeout(() => {
     setAddModal(false)
   },2000)
 
-  useEffect(()=>{
+  useEffect(() => {
     return () => setAddModal(false)
   },[])
 

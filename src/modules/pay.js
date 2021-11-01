@@ -9,18 +9,10 @@ export const payAlbumCart = (pay) => ({
 
 const initialState = [];
 
-const albumArr = [];
-
 export default function pay(state = initialState, action){
   switch(action.type){
     case PAY_ALBUM_CART:
       return state.concat(action.pay)
-      // state.concat(
-      //   albumArr.concat(
-      //     action.pay,
-      //     action.pay.date = date.getMinutes()
-      //     ),
-      //   )
     default:
       return state;
   }

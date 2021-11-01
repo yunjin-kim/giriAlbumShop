@@ -24,7 +24,9 @@ export default function CartPay({cartAlbum, onOrderAlbumCart}) {
     : cartAlbum.map((album)=>(
       album.date.year = date.getFullYear(),
       album.date.month = date.getMonth()+1,
-      album.date.date = date.getDate()
+      album.date.date = date.getDate(),
+      album.date.hour = date.getHours(),
+      album.date.minute = date.getMinutes()
     ))
 
     onOrderAlbumCart(cartAlbum)
