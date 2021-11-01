@@ -2,18 +2,17 @@ import React from 'react'
 import '../App.css';
 
 const CartAlbumToggle = ({album, onToggleAlbum}) => {
-
-  console.log("토글토글해")
-  console.log(album)
-  
   const toggleCartAlbum = () => {
-    onToggleAlbum(album.name)
+    console.log(album.album.name)
+    onToggleAlbum(album.album.name)
   }
+
+  console.log(album)
 
   return(
       album.check
-      ? <input type="checkbox" onClick={toggleCartAlbum}  />
-      : <input type="checkbox" onClick={toggleCartAlbum} defaultChecked />
+      ? <input type="checkbox" onClick={toggleCartAlbum} defaultChecked />
+      : <input type="checkbox" onClick={toggleCartAlbum} />
   )
 }
 
@@ -39,7 +38,6 @@ const CartAlbumDecrease = ({album, onDecreaseAlbum}) => {
   )
 }
 
-
 export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum, onIncreaseAlbum, onDecreaseAlbum }) {
   if(cartAlbum === "") return <div className="errorMessageNoData">텅..</div>;
 
@@ -48,7 +46,6 @@ export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum, onIncreas
     onDeleteAlbum(e.target.parentNode.children[2].innerHTML)
   }
 
-  
   return (
     <>
       <h2 className="cartList">장바구니</h2>

@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import "../App.css";
 import { filter, go, map, reduce } from '../fx';
+import "../App.css";
 
 export default function CartPay({cartAlbum, onOrderAlbumCart}) {
   const date = new Date;
-
+  
   let totalCartPrice = go(
     reduce((a,b)=>a+b,
     map((album) => (album.album.playcount*10)*(album.count),
-    filter((album) => album.check === false,
+    filter((album) => album.check === true,
     cartAlbum)))
   )
 
@@ -30,22 +30,33 @@ export default function CartPay({cartAlbum, onOrderAlbumCart}) {
         <h2>총 결제 금액</h2>
       </div>
       <div className="cartPayPrice"> 
-        <h2>{totalCartPrice}원</h2>
+        <h2>
+          {
+            totalCartPrice
+            ? totalCartPrice
+            : totalCartPrice = 0
+          }
+          원
+        </h2>
         <h2>+</h2>
         <h2>
           {
-            totalCartPrice > 50000
-            ?  0
-            :  2500
+            totalCartPrice > 0
+            ? totalCartPrice > 50000
+              ?  0
+              :  2500
+            :  0
           }
           원
         </h2>
         <h2>=</h2>
         <h2>
           {
-            totalCartPrice > 50000
-            ?  totalCartPrice
-            :  totalCartPrice + 2500
+            totalCartPrice > 0
+            ?  totalCartPrice > 50000
+              ?  totalCartPrice
+              :  totalCartPrice + 2500
+            :  totalCartPrice = 0
           }
           원
         </h2>

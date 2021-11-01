@@ -1,6 +1,5 @@
 import { PURGE } from "redux-persist/es/constants";
 
-
 const ADD_ALBUM_CART = 'ADD_ALBUM_CART';
 const DELETE_ALBUM_CART = 'DELETE_ALBUM_CART';
 const TOGGLE_ALBUM_CART = 'TOGGLE_ALBUM_CART';
@@ -34,7 +33,7 @@ export const decreaseAlbumCart = (name) => ({
 
 const initialState = [];
 
-export default function cart(state = initialState, action){
+export default function cart(state = initialState, action) {
   switch(action.type){
     case ADD_ALBUM_CART:
       return [
@@ -47,23 +46,23 @@ export default function cart(state = initialState, action){
             "month": "",
             "date": "",
           },
-          check: false,
+          check: true,
         }
       ]
     case DELETE_ALBUM_CART:
-      return state.filter((album)=>(
+      return state.filter((album) => (
         album.album.name !== action.name
       ));
     case TOGGLE_ALBUM_CART:
-      return state.map((album)=>(
-        album.name === action.name ? {...album, check: !album.check}: album
+      return state.map((album) => (
+        album.album.name === action.name ? {...album, check: !album.check}: album
       ))
     case INCREASE_ALBUM:
-      return state.map((album)=>(
+      return state.map((album) => (
         album.name === action.name ? album.count : album
       ))
     case DECREASE_ALBUM:
-      return state.map((album)=>(
+      return state.map((album) => (
         album.name === action.name ? album.count : album
       ))
     case PURGE:

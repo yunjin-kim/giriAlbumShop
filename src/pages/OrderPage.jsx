@@ -8,7 +8,7 @@ export default function OrderPage({history}) {
   const dispatch = useDispatch();
   const onLeaveOrderPage = () => dispatch(leaveOrderPage());
 
-  useEffect(()=>{
+  useEffect(() => {
     return () => {
       onLeaveOrderPage();
     }
