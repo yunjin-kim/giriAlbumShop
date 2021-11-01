@@ -7,18 +7,26 @@ export default function CartPay({cartAlbum, onOrderAlbumCart}) {
   const date = new Date;
   
   let totalCartPrice = go(
-    reduce((a,b)=>a+b,
+    reduce((a,b) => a + b,
     map((album) => (album.album.playcount*10)*(album.count),
     filter((album) => album.check === true,
     cartAlbum)))
   )
 
-  const orderAlbumCart = () => {
-    cartAlbum.map((album)=>(
+  function noSelectAlbum(e){
+    e.preventDefault()
+    alert("선택하신 상품이 없습니다")
+  }
+
+  const orderAlbumCart = (e) => {
+    totalCartPrice === 0
+    ? noSelectAlbum(e)
+    : cartAlbum.map((album)=>(
       album.date.year = date.getFullYear(),
       album.date.month = date.getMonth()+1,
       album.date.date = date.getDate()
     ))
+
     onOrderAlbumCart(cartAlbum)
   }
 

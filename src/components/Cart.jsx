@@ -7,8 +7,6 @@ const CartAlbumToggle = ({album, onToggleAlbum}) => {
     onToggleAlbum(album.album.name)
   }
 
-  console.log(album)
-
   return(
       album.check
       ? <input type="checkbox" onClick={toggleCartAlbum} defaultChecked />
