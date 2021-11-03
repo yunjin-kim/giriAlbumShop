@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import searchIcon from '../img/search.png';
 import '../App.css';
 
 export default function SearchAlbum({onSeacrchAlbum}) {
@@ -13,10 +14,21 @@ export default function SearchAlbum({onSeacrchAlbum}) {
     onSeacrchAlbum(saerchText);
   }
 
+  const searchFormSubmit = (e) => {
+    e.preventDefault();
+    onSeacrchAlbum(saerchText);
+
+  }
+
   return (
     <>
-      <input className="searchInput" onChange={searchInputChange} />
-      <button className="searchBtn" onClick={searchInputSubmit}>검색</button>
+      
+      <form className="searchForm" onSubmit={searchFormSubmit}>
+        <input className="searchInput" onChange={searchInputChange}  />
+        <button className="searchBtn" onClick={searchInputSubmit}>
+          <img className="searchIcon" src={searchIcon} alt="검색아이콘" />
+        </button>
+      </form>
     </>
   )
 }
