@@ -7,7 +7,7 @@ export const payAlbumCart = (pay) => ({
 
 const initialState = [];
 
-export default function pay(state = initialState, action){
+export default function pay(state = initialState, action) {
   switch(action.type){
     case PAY_ALBUM_CART:
       return state.concat(action.pay)

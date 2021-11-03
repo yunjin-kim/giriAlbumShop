@@ -6,7 +6,7 @@ import SearchAlbum from '../components/SearchAlbum';
 export default function SearchAlbumContainer() {
   const dispatch = useDispatch();
 
-  const onSeacrchAlbum = () => dispatch(searchAlbum());
+  const onSeacrchAlbum = (saerchText) => dispatch(searchAlbum(saerchText));
 
   return (
     <>

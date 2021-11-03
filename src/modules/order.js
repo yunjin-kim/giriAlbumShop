@@ -12,7 +12,7 @@ export const leaveOrderPage = () => ({
 
 const inititalState = [];
 
-export default function order(state = inititalState, action){
+export default function order(state = inititalState, action) {
   switch(action.type){
     case ORDER_ALBUM_CART:
       return state.concat(action.order);

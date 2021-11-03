@@ -1,5 +1,3 @@
-import { getMusics } from "../api/albums";
-
 const SEARCH_ALBUM = 'SEARCH_ALBUM';
 
 export const searchAlbum = (searchText) => ({
@@ -9,10 +7,10 @@ export const searchAlbum = (searchText) => ({
 
 const initialState = "기리보이";
 
-export default function search(state = initialState, action){
+export default function search(state = initialState, action) {
   switch(action.type){
     case SEARCH_ALBUM:
-      getMusics(action.searchText);
+      return action.searchText;
     default:
       return state;
   }

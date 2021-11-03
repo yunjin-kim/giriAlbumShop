@@ -6,11 +6,12 @@ import "../App.css";
 
 export default function MusicListContainer() {
   const { loading, data, error } = useSelector(state => state.albums.albums);
+  const saerchText = useSelector(state => state.search)
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    dispatch(getAlbums())
-  },[dispatch])
+    dispatch(getAlbums(saerchText))
+  },[dispatch, saerchText])
   
   if(loading) return <div>로딩중</div>
   if(error) return <div className="errorMessageNoData">404..</div>
