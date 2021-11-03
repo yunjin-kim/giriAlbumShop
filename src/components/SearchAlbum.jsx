@@ -9,23 +9,26 @@ export default function SearchAlbum({onSeacrchAlbum}) {
     setSearchText(e.target.value);
   }
 
-  const searchInputSubmit = (e) => {
+  const searchBtnSubmit = (e) => {
     e.preventDefault();
-    onSeacrchAlbum(saerchText);
+    if(saerchText){
+      onSeacrchAlbum(saerchText)
+    }
   }
 
   const searchFormSubmit = (e) => {
     e.preventDefault();
-    onSeacrchAlbum(saerchText);
-
+    if(saerchText){
+      onSeacrchAlbum(saerchText);
+    }
   }
 
   return (
     <>
       
       <form className="searchForm" onSubmit={searchFormSubmit}>
-        <input className="searchInput" onChange={searchInputChange}  />
-        <button className="searchBtn" onClick={searchInputSubmit}>
+        <input className="searchInput" onChange={searchInputChange} placeholder="앨범이름 검색만 되네?" />
+        <button className="searchBtn" onClick={searchBtnSubmit}>
           <img className="searchIcon" src={searchIcon} alt="검색아이콘" />
         </button>
       </form>
