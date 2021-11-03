@@ -3,7 +3,6 @@ import '../App.css';
 
 const CartAlbumToggle = ({album, onToggleAlbum}) => {
   const toggleCartAlbum = () => {
-    console.log(album.album.name)
     onToggleAlbum(album.album.name)
   }
 
@@ -37,7 +36,12 @@ const CartAlbumDecrease = ({album, onDecreaseAlbum}) => {
 }
 
 export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum, onIncreaseAlbum, onDecreaseAlbum }) {
-  if(cartAlbum === "") return <div className="errorMessageNoData">텅..</div>;
+  if(cartAlbum === "" || cartAlbum.length === 0) return(
+    <>
+      <h2 className="cartList">장바구니</h2>,
+      <div className="errorMessageNoData">텅..</div>
+  </>
+  ) 
 
   //e.target 어쩌고저쩌고 대신 할 수 있는거 고민
   const deleteAlbum = (e) => {

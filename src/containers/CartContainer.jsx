@@ -7,8 +7,8 @@ export default function CartContainer() {
   const cartAlbum = useSelector(state => state.cart);
   const dispatch = useDispatch();
 
-  const onToggleAlbum = name => dispatch(toggleAlbumCart(name));
-  const onDeleteAlbum = name => dispatch(deleteAlbumCart(name));
+  const onToggleAlbum = (name) => dispatch(toggleAlbumCart(name));
+  const onDeleteAlbum = (name) => dispatch(deleteAlbumCart(name));
   const onIncreaseAlbum = (count) => dispatch(increaseAlbumCart(count));
   const onDecreaseAlbum = (count) => dispatch(decreaseAlbumCart(count));
   

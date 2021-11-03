@@ -20,11 +20,11 @@ export const getAlbums = (searchText) => async (dispatch) => {
 }
 
 export const getAlbum = (url) => async (dispatch) => {
-  console.log(url)
-  let urlArtist = url.match(/.+(?=:)/gm)[0];
-  let urlAlumName = url.match(/(?<=:)[^]+/gm)[0];
   dispatch({type: GET_ALBUM});
   try{
+    console.log(url)
+    const urlArtist = url.match(/.+(?=:)/gm)[0];
+    const urlAlumName = url.match(/(?<=:)[^]+/gm)[0];
     const albums = await axios.get(`http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${urlArtist}&api_key=4eaa2e6cafb967fa096e6d2e3dec0344&format=json`);
     const album = albums.data.topalbums.album.find(data => data.name === urlAlumName)
     dispatch({type: GET_ALBUM_SUCCESS, album});
