@@ -3,7 +3,8 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 
 export default function MusicList({albums}) {
-
+  if(albums.data.error) return <div className="errorMessageNoData">텅..</div>;
+  
   return (
     <>
       <div className="albumWrap">
