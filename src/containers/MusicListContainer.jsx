@@ -1,25 +1,28 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import  { getAlbums } from '../modules/musics';
+import  { getAlbumsAlbumName } from '../modules/musics';
 import MusicList from '../components/MusicList';
-import "../App.css";
 
 export default function MusicListContainer() {
-  const { loading, data, error } = useSelector(state => state.albums.albums);
-  const saerchText = useSelector(state => state.search)
+  const { loading, data, error } = useSelector(state => state.albums.musics);
+  const searchText = useSelector(state => state.search)
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    dispatch(getAlbums(saerchText))
-  },[dispatch, saerchText])
+  console.log("여기도 실행한당")
+  console.log(data)
   
+
+  useEffect(() => {
+    dispatch(getAlbumsAlbumName(searchText))
+  },[dispatch, searchText]);
+
   if(loading) return <div>로딩중</div>
   if(error) return <div className="errorMessageNoData">404..</div>
   if(!data) return <div className="errorMessageNoData">텅..</div>;
-
+  
   return (
     <>
-      <MusicList albums={data} />
+      <MusicList musics={data} />
     </>
   )
 }

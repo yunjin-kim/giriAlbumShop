@@ -1,38 +1,57 @@
-import * as posstApi from '../api/album';
+import * as postApi from '../api/album';
 
-const GET_ALBUMS = 'GET_ALBUMS';
-const GET_ALBUMS_SUCCESS = 'GET_ALBUMS_SUCCESS';
-const GET_ALBUMS_ERROR = 'GET_ALBUMS_ERROR';
+const GET_ALBUMS_ARTISTNAME = 'GET_ALBUMS_ARTISTNAME';
+const GET_ALBUMS_ARTISTNAME_SUCCESS = 'GET_ALBUMS_ARTISTNAME_SUCCESS';
+const GET_ALBUMS_ARTISTNAME_ERROR = 'GET_ALBUMS_ARTISTNAME_ERROR';
+
+const GET_ALBUMS_ALBUMNAME = 'GET_ALBUMS_ALBUMNAME';
+const GET_ALBUMS_ALBUMNAME_SUCCESS = 'GET_ALBUMS_ALBUMNAME_SUCCESS';
+const GET_ALBUMS_ALBUMNAME_ERROR = 'GET_ALBUMS_ALBUMNAME_ERROR';
 
 const GET_ALBUM = 'GET_ALBUM';
 const GET_ALBUM_SUCCESS = 'GET_ALBUM_SUCCESS';
 const GET_ALBUM_ERROR = 'GET_ALBUM_ERROR';
 
-export const getAlbums = (searchText) => async (dispatch) => {
-  dispatch({type: GET_ALBUMS});
+export const getAlbumsArtistName = (searchText) => async (dispatch) => {
+  dispatch({type: GET_ALBUMS_ARTISTNAME});
   try{
-    // const albums = await axios.get(`http://ws.audioscrobbler.com/2.0/?method=album.search&album=${searchText}&api_key=4eaa2e6cafb967fa096e6d2e3dec0344&format=json`);
-    const albums = await posstApi.getAlbums(searchText);
-    dispatch({type: GET_ALBUMS_SUCCESS, albums});
+    const albums = await postApi.getAlbumsArtistName(searchText);
+    dispatch({type: GET_ALBUMS_ARTISTNAME_SUCCESS, albums});
   }
-  catch(e){
-    dispatch({type: GET_ALBUMS_ERROR, error: e})
+  catch(e) { 
+    dispatch({type: GET_ALBUMS_ARTISTNAME_ERROR, error: e})
+  }
+}
+
+export const getAlbumsAlbumName = (searchText) => async (dispatch) => {
+  dispatch({type: GET_ALBUMS_ALBUMNAME});
+  try{
+    const musics = await postApi.getAlbumsAlbumName(searchText);
+    dispatch({type: GET_ALBUMS_ALBUMNAME_SUCCESS, musics});
+  }
+  catch(e) {
+    dispatch({type: GET_ALBUMS_ALBUMNAME_ERROR, error: e})
   }
 }
 
 export const getAlbum = (url) => async (dispatch) => {
   dispatch({type: GET_ALBUM});
   try{
-    const album = await posstApi.getAlbum(url);
+    const album = await postApi.getAlbum(url);
     dispatch({type: GET_ALBUM_SUCCESS, album});
   }
-  catch(e){
+  catch(e) {
     dispatch({type: GET_ALBUM_ERROR, error: e})
   }
 }
 
 const initialState = {
   albums: {
+    loading: false,
+    data: null,
+    error: null
+  },
+  musics: {
     loading: false,
     data: null,
     error: null
@@ -44,9 +63,9 @@ const initialState = {
   }
 }
 
-export default function albums(state = initialState, action){
-  switch(action.type){
-    case GET_ALBUMS:
+export default function albums(state = initialState, action) {
+  switch(action.type) {
+    case GET_ALBUMS_ARTISTNAME:
       return{
         ...state,
         albums: {
@@ -55,7 +74,7 @@ export default function albums(state = initialState, action){
           error: null
         }
       }
-    case GET_ALBUMS_SUCCESS:
+    case GET_ALBUMS_ARTISTNAME_SUCCESS:
       return{
         ...state,
         albums: {
@@ -64,10 +83,37 @@ export default function albums(state = initialState, action){
           error: null
         }
       }
-    case GET_ALBUMS_ERROR:
+    case GET_ALBUMS_ARTISTNAME_ERROR:
       return{
         ...state,
         albums: {
+          loading: false,
+          data: null,
+          error: action.error
+        }
+      }
+    case GET_ALBUMS_ALBUMNAME:
+      return{
+        ...state,
+        musics: {
+          loading: true,
+          data: null,
+          error: null
+        }
+      }
+    case GET_ALBUMS_ALBUMNAME_SUCCESS:
+      return{
+        ...state,
+        musics: {
+          loading: false,
+          data: action.musics,
+          error: null
+        }
+      }
+    case GET_ALBUMS_ALBUMNAME_ERROR:
+      return{
+        ...state,
+        musics: {
           loading: false,
           data: null,
           error: action.error
