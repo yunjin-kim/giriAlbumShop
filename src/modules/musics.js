@@ -1,4 +1,4 @@
-import axios from "axios";
+import * as posstApi from '../api/album';
 
 const GET_ALBUMS = 'GET_ALBUMS';
 const GET_ALBUMS_SUCCESS = 'GET_ALBUMS_SUCCESS';
@@ -11,7 +11,8 @@ const GET_ALBUM_ERROR = 'GET_ALBUM_ERROR';
 export const getAlbums = (searchText) => async (dispatch) => {
   dispatch({type: GET_ALBUMS});
   try{
-    const albums = await axios.get(`http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${searchText}&api_key=4eaa2e6cafb967fa096e6d2e3dec0344&format=json`);
+    // const albums = await axios.get(`http://ws.audioscrobbler.com/2.0/?method=album.search&album=${searchText}&api_key=4eaa2e6cafb967fa096e6d2e3dec0344&format=json`);
+    const albums = await posstApi.getAlbums(searchText);
     dispatch({type: GET_ALBUMS_SUCCESS, albums});
   }
   catch(e){
@@ -22,11 +23,7 @@ export const getAlbums = (searchText) => async (dispatch) => {
 export const getAlbum = (url) => async (dispatch) => {
   dispatch({type: GET_ALBUM});
   try{
-    console.log(url)
-    const urlArtist = url.match(/.+(?=:)/gm)[0];
-    const urlAlumName = url.match(/(?<=:)[^]+/gm)[0];
-    const albums = await axios.get(`http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${urlArtist}&api_key=4eaa2e6cafb967fa096e6d2e3dec0344&format=json`);
-    const album = albums.data.topalbums.album.find(data => data.name === urlAlumName)
+    const album = await posstApi.getAlbum(url);
     dispatch({type: GET_ALBUM_SUCCESS, album});
   }
   catch(e){
