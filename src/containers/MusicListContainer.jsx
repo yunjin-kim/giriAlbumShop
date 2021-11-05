@@ -8,7 +8,7 @@ export default function MusicListContainer() {
   const searchText = useSelector(state => state.search)
   const dispatch = useDispatch();
 
-  console.log("여기도 실행한당")
+  console.log("앨범으로 검색")
   console.log(data)
   
 

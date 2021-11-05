@@ -8,6 +8,7 @@ export default function AlbumList({albums}) {
   
   return (
     <>
+      <h2 className="searchTitle">아티스트 검색걸과</h2>
       <div className="albumWrap">
         {albums.data.topalbums.album.filter(album => album.image[2]['#text'] !== '').map((album) => (
           <div key={album.url} >

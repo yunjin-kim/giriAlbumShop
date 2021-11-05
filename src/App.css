@@ -132,3 +132,7 @@ a:link {
 .searchIcon{
   width: 24px;
 }
+.searchTitle{
+  text-align: center;
+  margin-bottom: 30px;
+}

@@ -9,6 +9,9 @@ export default function AlbumListContainer() {
   const saerchText = useSelector(state => state.search)
   const dispatch = useDispatch();
 
+  console.log("아티스트로검색")
+  console.log(data)
+
   useEffect(()=>{
     dispatch(getAlbumsArtistName(saerchText))
   },[dispatch, saerchText])

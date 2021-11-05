@@ -27,7 +27,7 @@ export default function SearchAlbum({onSeacrchAlbum}) {
     <>
       
       <form className="searchForm" onSubmit={searchFormSubmit}>
-        <input className="searchInput" onChange={searchInputChange} placeholder="아티스트이름 검색만 되네?" />
+        <input className="searchInput" onChange={searchInputChange} />
         <button className="searchBtn" onClick={searchBtnSubmit}>
           <img className="searchIcon" src={searchIcon} alt="검색아이콘" />
         </button>
