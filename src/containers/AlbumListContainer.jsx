@@ -1,16 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, lazy, Suspense } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import  { getAlbumsArtistName } from '../modules/musics';
 import AlbumList from '../components/AlbumList';
 import "../App.css";
 
+//아티스트 이름으로 검색
 export default function AlbumListContainer() {
   const { loading, data, error } = useSelector(state => state.albums.albums);
   const saerchText = useSelector(state => state.search)
   const dispatch = useDispatch();
-
-  console.log("아티스트로검색")
-  console.log(data)
 
   useEffect(()=>{
     dispatch(getAlbumsArtistName(saerchText))

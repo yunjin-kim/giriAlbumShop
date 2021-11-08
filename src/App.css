@@ -136,3 +136,8 @@ a:link {
   text-align: center;
   margin-bottom: 30px;
 }
+.lazyBox{
+  width: 174px;
+  height: 174px;
+  background-color: #4ac8f0;
+}

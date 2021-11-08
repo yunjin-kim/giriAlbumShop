@@ -7,8 +7,6 @@ import OrderPage from './pages/OrderPage';
 import PayPage from './pages/PayPage';
 
 function App() {
-  console.log("App")
-
 
   return (
     <>  

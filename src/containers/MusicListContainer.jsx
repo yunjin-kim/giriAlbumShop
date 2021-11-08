@@ -3,15 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import  { getAlbumsAlbumName } from '../modules/musics';
 import MusicList from '../components/MusicList';
 
+//앨범 이름으로 검색
 export default function MusicListContainer() {
   const { loading, data, error } = useSelector(state => state.albums.musics);
   const searchText = useSelector(state => state.search)
   const dispatch = useDispatch();
-
-  console.log("앨범으로 검색")
-  console.log(data)
   
-
   useEffect(() => {
     dispatch(getAlbumsAlbumName(searchText))
   },[dispatch, searchText]);

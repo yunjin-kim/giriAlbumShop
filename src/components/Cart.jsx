@@ -51,6 +51,7 @@ export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum, onIncreas
   return (
     <>
       <h2 className="cartList">장바구니</h2>
+      <input type="checkbox" defaultChecked />
       {cartAlbum.map((cartEachAlbum)=>(
         <div key={cartEachAlbum.album.name} className="cartEachAlbum">
           <CartAlbumToggle album={cartEachAlbum} onToggleAlbum={onToggleAlbum} />
