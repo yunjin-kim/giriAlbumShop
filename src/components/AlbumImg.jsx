@@ -1,7 +1,10 @@
-import React from 'react'
-import LazyLoad from 'react-lazyload'
+import React from 'react';
+import LazyLoad from 'react-lazyload';
+import '../App.css';
+
 
 export default function AlbumImg({album}) {
+  console.log("레이즈 로드 실행")
   return (
     <>
       <LazyLoad>
