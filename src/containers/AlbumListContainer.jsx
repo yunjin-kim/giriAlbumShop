@@ -14,7 +14,7 @@ export default function AlbumListContainer() {
     dispatch(getAlbumsArtistName(saerchText))
   },[dispatch, saerchText])
   
-  if(loading) return <div>로딩중</div>;
+  if(loading && !data) return <div>로딩중</div>;
   if(error) return <div className="errorMessageNoData">404..</div>;
   if(!data) return <div className="errorMessageNoData">텅..</div>;
 

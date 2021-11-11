@@ -36,7 +36,7 @@ export const reducerUtils = {
   })
 }
 
-export const handleAlbumsAsyncActions = (type, key) => {
+export const handleAlbumsAsyncActions = (type, key, keepData = false) => {
   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
 
   return (state, action) => {
@@ -44,7 +44,7 @@ export const handleAlbumsAsyncActions = (type, key) => {
       case type:
         return {
           ...state,
-          [key]: reducerUtils.loading()
+          [key]: reducerUtils.loading(keepData ? state[key].data : null)
         }
       case SUCCESS:
         return {

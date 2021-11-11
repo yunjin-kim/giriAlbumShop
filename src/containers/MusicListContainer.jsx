@@ -13,7 +13,7 @@ export default function MusicListContainer() {
     dispatch(getAlbumsAlbumName(searchText))
   },[dispatch, searchText]);
 
-  if(loading) return <div>로딩중</div>
+  if(loading && !data) return <div>로딩중</div>
   if(error) return <div className="errorMessageNoData">404..</div>
   if(!data) return <div className="errorMessageNoData">텅..</div>;
   
