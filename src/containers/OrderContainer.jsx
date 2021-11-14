@@ -5,6 +5,8 @@ import Order from '../components/Order';
 export default function OrderContainer() {
   const orderList = useSelector(state => state.order);
 
+  console.log(orderList)
+
   return (
     <>
       <Order orderList={orderList} />

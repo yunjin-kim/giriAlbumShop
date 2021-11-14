@@ -1,12 +1,33 @@
 import React from 'react'
 import '../App.css';
 
+const CartAlbumAllToggle = ({onToggleAllAlbum, cartAlbum}) => {
+
+  const toggleCartAllAlbum = () => {
+    onToggleAllAlbum(cartAlbum);
+  }
+
+  console.log("실행")
+
+  cartAlbum.find((album) => (
+    album.check === false ? {...album, check: album.check}: album
+  ))
+
+
+  return (
+    <input type="checkbox" onClick={toggleCartAllAlbum} defaultChecked />
+  )
+}
+
 const CartAlbumToggle = ({album, onToggleAlbum}) => {
   const toggleCartAlbum = () => {
     onToggleAlbum(album.album.name)
   }
 
-  return(
+  console.log("실행실행")
+  console.log(album.check)
+
+  return (
       album.check
       ? <input type="checkbox" onClick={toggleCartAlbum} defaultChecked />
       : <input type="checkbox" onClick={toggleCartAlbum} />
@@ -19,7 +40,7 @@ const CartAlbumIncrease = ({album, onIncreaseAlbum}) => {
     album.count += 1;
   }
 
-  return(
+  return (
     <button onClick={increaseAlbum}>+</button>
   )
 }
@@ -30,18 +51,19 @@ const CartAlbumDecrease = ({album, onDecreaseAlbum}) => {
     album.count -= 1;
   }
 
-  return(
+  return (
     <button onClick={decreaseAlbum}>-</button>
   )
 }
 
-export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum, onIncreaseAlbum, onDecreaseAlbum }) {
-  if(cartAlbum === "" || cartAlbum.length === 0) return(
-    <>
-      <h2 className="cartList">장바구니</h2>,
-      <div className="errorMessageNoData">텅..</div>
-  </>
-  ) 
+export default function Cart({cartAlbum, onToggleAllAlbum, onToggleAlbum, onDeleteAlbum, onIncreaseAlbum, onDecreaseAlbum }) {
+  if(cartAlbum === "" || cartAlbum.length === 0) {
+    return (
+      <>
+        <h2 className="cartList">장바구니</h2>,
+        <div className="errorMessageNoData">텅..</div>
+      </>
+  )}
 
   //e.target 어쩌고저쩌고 대신 할 수 있는거 고민
   const deleteAlbum = (e) => {
@@ -51,7 +73,7 @@ export default function Cart({cartAlbum, onToggleAlbum, onDeleteAlbum, onIncreas
   return (
     <>
       <h2 className="cartList">장바구니</h2>
-      <input type="checkbox" defaultChecked />
+      <CartAlbumAllToggle onToggleAllAlbum={onToggleAllAlbum} cartAlbum={cartAlbum} />
       {cartAlbum.map((cartEachAlbum)=>(
         <div key={cartEachAlbum.album.name} className="cartEachAlbum">
           <CartAlbumToggle album={cartEachAlbum} onToggleAlbum={onToggleAlbum} />

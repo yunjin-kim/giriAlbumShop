@@ -2,6 +2,7 @@ import { PURGE } from "redux-persist/es/constants";
 
 const ADD_ALBUM_CART = 'ADD_ALBUM_CART';
 const DELETE_ALBUM_CART = 'DELETE_ALBUM_CART';
+const TOGGLE_ALLALBUM_CART = 'TOGGLE_ALLALBUM_CART';
 const TOGGLE_ALBUM_CART = 'TOGGLE_ALBUM_CART';
 const INCREASE_ALBUM = 'INCREASE_ALBUM';
 const DECREASE_ALBUM = 'DECREASE_ALBUM';
@@ -15,6 +16,11 @@ export const deleteAlbumCart = (name) => ({
   type: DELETE_ALBUM_CART,
   name,
 });
+
+export const toggleAllAlbumCart = (cartAlbum) => ({
+  type: TOGGLE_ALLALBUM_CART,
+  cartAlbum,
+})
 
 export const toggleAlbumCart = (name) => ({
   type: TOGGLE_ALBUM_CART,
@@ -55,6 +61,13 @@ export default function cart(state = initialState, action) {
       return state.filter((album) => (
         album.album.name !== action.name
       ));
+    case TOGGLE_ALLALBUM_CART: //되긴하는데 화면에서 채크박스가 바뀌지는 않는다
+      return state.map((album) => (
+        album.check ? {...album, check: !album.check} : {...album, check: !album.check}
+      ))
+      // return state.map((album) => (
+      //   album ? {...album, check: !album.check} : album
+      // ))
     case TOGGLE_ALBUM_CART:
       return state.map((album) => (
         album.album.name === action.name ? {...album, check: !album.check}: album

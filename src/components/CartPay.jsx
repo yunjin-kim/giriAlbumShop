@@ -27,7 +27,10 @@ export default function CartPay({cartAlbum, onOrderAlbumCart}) {
       album.date.date = date.getDate(),
       album.date.hour = date.getHours(),
       album.date.minute = date.getMinutes()
-    ))
+      )
+    )
+
+    console.log(cartAlbum)
 
     onOrderAlbumCart(cartAlbum)
   }

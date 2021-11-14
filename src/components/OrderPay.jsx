@@ -5,7 +5,7 @@ import "../App.css";
 
 export default function OrderPay({orderAlbum, onPayAlbumCart}) {
   
-  let payAlbumPrice = orderAlbum.map((album)=> {
+  let payAlbumPrice = orderAlbum.albums.map((album)=> {
     return(album.album.playcount*10)*(album.count)
   })
 

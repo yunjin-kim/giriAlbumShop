@@ -1,4 +1,4 @@
-import React, { useEffect, lazy, Suspense } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import  { getAlbumsArtistName } from '../modules/musics';
 import AlbumList from '../components/AlbumList';
