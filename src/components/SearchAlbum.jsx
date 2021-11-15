@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import searchIcon from '../img/search.png';
 import '../App.css';
 
-export default function SearchAlbum({onSeacrchAlbum}) {
+export default function SearchAlbum({ onSeacrchAlbum }) {
   const [saerchText, setSearchText] = useState('');
 
   const searchInputChange = (e) => {
@@ -25,7 +25,6 @@ export default function SearchAlbum({onSeacrchAlbum}) {
 
   return (
     <>
-      
       <form className="searchForm" onSubmit={searchFormSubmit}>
         <input className="searchInput" onChange={searchInputChange} />
         <button className="searchBtn" onClick={searchBtnSubmit}>

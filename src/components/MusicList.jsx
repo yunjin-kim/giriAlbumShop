@@ -2,7 +2,7 @@ import React from 'react'
 import '../App.css';
 import { Link } from 'react-router-dom';
 
-export default function MusicList({musics}) {
+export default function MusicList({ musics }) {
   if(musics.data.results.albummatches.album.length === 0) return <div className="errorMessageNoData">텅..</div>;
 
   return (

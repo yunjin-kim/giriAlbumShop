@@ -4,7 +4,7 @@ import '../App.css';
 
 const AlbumImg = lazy(() => import('./AlbumImg'))
 
-export default function AlbumList({albums}) {  
+export default function AlbumList({ albums }) {  
   if(albums.data.error) return <div className="errorMessageNoData">텅..</div>;
   
   return (

@@ -6,8 +6,6 @@ import Pay from '../components/Pay';
 export default function PayContainer() {
   const payAlbums = useSelector(state => state.pay);
 
-  console.log(payAlbums)
-
   return (
     <>
       <Pay payAlbums={payAlbums} />

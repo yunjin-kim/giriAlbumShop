@@ -2,27 +2,27 @@ import React, { useEffect, useState } from 'react'
 import AddCartModal from './AddCartModal';
 import '../App.css';
 
-export default function Music({album, onAddAlbum, cartAlbum}) {
-  const [addModal, setAddModal] = useState(false)
+export default function Music({ album, onAddAlbum, cartAlbum }) {
+  const [addModal, setAddModal] = useState(false);
 
   const addCart = () => {
     setAddModal(true);
 
     return cartAlbum.length <= 0 
       ?  onAddAlbum(album)
-      : cartAlbum.find((cartEachAlbum)=>(
+      : cartAlbum.find((cartEachAlbum) => (
           cartEachAlbum.album.name === album.name))
           ?  null
           : onAddAlbum(album);
   }
 
   setTimeout(() => {
-    setAddModal(false)
-  },2000)
+    setAddModal(false);
+  }, 2000)
 
   useEffect(() => {
     return () => setAddModal(false)
-  },[])
+  }, [])
 
   return (
     <div className="detailPageWrap">

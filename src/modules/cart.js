@@ -53,6 +53,7 @@ export default function cart(state = initialState, action) {
             "date": "",
             "hour": "",
             "minute": "",
+            "second": "",
           },
           check: true,
         }

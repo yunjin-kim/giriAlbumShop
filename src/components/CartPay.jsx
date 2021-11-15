@@ -13,7 +13,7 @@ export default function CartPay({cartAlbum, onOrderAlbumCart}) {
     cartAlbum)))
   )
 
-  function noSelectAlbum(e){
+  const noSelectAlbum = (e) => {
     e.preventDefault()
     alert("선택하신 상품이 없습니다")
   }
@@ -26,11 +26,14 @@ export default function CartPay({cartAlbum, onOrderAlbumCart}) {
       album.date.month = date.getMonth()+1,
       album.date.date = date.getDate(),
       album.date.hour = date.getHours(),
-      album.date.minute = date.getMinutes()
+      album.date.minute = date.getMinutes(),
+      album.date.second = date.getSeconds()
       )
     )
 
-    console.log(cartAlbum)
+    cartAlbum = cartAlbum.filter((album) => (
+      album.check === true
+    ))
 
     onOrderAlbumCart(cartAlbum)
   }

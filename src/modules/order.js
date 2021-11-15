@@ -15,14 +15,9 @@ const inititalState = [];
 export default function order(state = inititalState, action) {
   switch(action.type){
     case ORDER_ALBUM_CART:
-      return {
-        ...state,
-          albums: action.order.filter((orderAlbum) => (
-          orderAlbum.check !== false
-        ))         
-      }
+      return state.concat(action.order);
     case LEAVE_ORDER_PAGE:
-      state.albums.splice(0, state.length);
+      state.splice(0, state.length);
     default:
       return state;
   }
