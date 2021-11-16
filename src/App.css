@@ -141,3 +141,10 @@ a:link {
   height: 174px;
   background-color: #4ac8f0;
 }
+.fade {
+  opacity: 0;
+}
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.3s;
+}

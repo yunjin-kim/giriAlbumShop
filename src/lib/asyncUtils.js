@@ -5,6 +5,8 @@ export const createAlbumsPromiseThunk = (type, promiseFn) => {
     dispatch({type, param});
     try {
       const payload = await promiseFn(param);
+      console.log("콘솔")
+      console.log(payload)
       dispatch({type: SUCCESS, payload});
     }
     catch (e) {
