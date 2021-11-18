@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import  { getAlbumsArtistName } from '../modules/musics';
 import AlbumList from '../components/AlbumList';
+import { RootState } from '../modules';
 import "../App.css";
 
 //아티스트 이름으로 검색

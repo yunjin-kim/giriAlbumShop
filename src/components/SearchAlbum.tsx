@@ -1,22 +1,26 @@
-import React, { useState } from 'react'
+import React, { ChangeEvent, FormEvent, useState } from 'react'
 import searchIcon from '../img/search.png';
 import '../App.css';
 
-export default function SearchAlbum({ onSeacrchAlbum }) {
+type SearchAlbumProps = {
+  onSeacrchAlbum: (saerchText: string) => void;
+}
+
+export default function SearchAlbum({ onSeacrchAlbum }: SearchAlbumProps) {
   const [saerchText, setSearchText] = useState('');
 
-  const searchInputChange = (e) => {
+  const searchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
   }
 
-  const searchBtnSubmit = (e) => {
+  const searchBtnSubmit = (e: FormEvent) => {
     e.preventDefault();
     if(saerchText){
       onSeacrchAlbum(saerchText)
     }
   }
 
-  const searchFormSubmit = (e) => {
+  const searchFormSubmit = (e: FormEvent) => {
     e.preventDefault();
     if(saerchText){
       onSeacrchAlbum(saerchText);

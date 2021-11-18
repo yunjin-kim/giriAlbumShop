@@ -6,7 +6,7 @@ import AlbumListPage from './pages/AlbumListPage';
 import OrderPage from './pages/OrderPage';
 import PayPage from './pages/PayPage';
 
-function App() {
+const App: React.FC = () => {
 
   return (
     <>  

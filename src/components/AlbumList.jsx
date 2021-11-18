@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import AlbumImg from './AlbumImg';
 import '../App.css';
 
+// type AlbumListProps = {
+//   albums
+// }
 
 export default function AlbumList({ albums }) {  
   if(albums.data.error) return <div className="errorMessageNoData">텅..</div>;

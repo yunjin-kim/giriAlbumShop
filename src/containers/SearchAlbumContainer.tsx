@@ -3,10 +3,12 @@ import { useDispatch } from 'react-redux'
 import { searchAlbum } from '../modules/search';
 import SearchAlbum from '../components/SearchAlbum';
 
+
+
 export default function SearchAlbumContainer() {
   const dispatch = useDispatch();
 
-  const onSeacrchAlbum = (saerchText) => dispatch(searchAlbum(saerchText));
+  const onSeacrchAlbum = (saerchText: string) => dispatch(searchAlbum(saerchText));
 
   return (
     <>

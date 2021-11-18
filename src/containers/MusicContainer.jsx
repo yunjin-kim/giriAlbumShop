@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Music from '../components/Music';
-import { clearAlbum, getAlbum } from '../modules/musics';
+import { getAlbum } from '../modules/musics';
 import { addAlbumCart } from '../modules/cart';
 
 export default function MusicContainer({url}) {
@@ -11,9 +11,9 @@ export default function MusicContainer({url}) {
 
   useEffect(()=> {
     dispatch(getAlbum(url));
-    return () => {
-      clearAlbum();
-    }
+    // return () => {
+    //   clearAlbum();
+    // }
   },[dispatch, url])
 
   const onAddAlbum = album => dispatch(addAlbumCart(album))
