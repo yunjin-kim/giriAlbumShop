@@ -1,40 +1,64 @@
 // import * as postApi from '../api/album';
 // import { createAlbumsPromiseThunk, handleAlbumsAsyncActions, reducerUtils } from '../lib/asyncUtils';
-import { deprecated, ActionType, createReducer } from 'typesafe-actions';
+import { AxiosError } from 'axios';
+import { deprecated, ActionType, createReducer, createAsyncAction } from 'typesafe-actions';
 import * as postApi from '../api/album';
+import { ArtistName} from './artistNameTypes';
+import { AlbumName } from './albumNameTypes';
+import { ThunkAction } from 'redux-thunk';
+import { RootState } from '.';
 const { createAction, createStandardAction } = deprecated;
 
-const GET_ALBUMS_ARTISTNAME = 'GET_ALBUMS_ARTISTNAME' as const;
-const GET_ALBUMS_ARTISTNAME_SUCCESS = 'GET_ALBUMS_ARTISTNAME_SUCCESS' as const;
-const GET_ALBUMS_ARTISTNAME_ERROR = 'GET_ALBUMS_ARTISTNAME_ERROR' as const;
+const GET_ALBUMS_ARTISTNAME = 'GET_ALBUMS_ARTISTNAME';
+const GET_ALBUMS_ARTISTNAME_SUCCESS = 'GET_ALBUMS_ARTISTNAME_SUCCESS';
+const GET_ALBUMS_ARTISTNAME_ERROR = 'GET_ALBUMS_ARTISTNAME_ERROR';
 
-const GET_ALBUMS_ALBUMNAME = 'GET_ALBUMS_ALBUMNAME' as const;
-const GET_ALBUMS_ALBUMNAME_SUCCESS = 'GET_ALBUMS_ALBUMNAME_SUCCESS' as const;
-const GET_ALBUMS_ALBUMNAME_ERROR = 'GET_ALBUMS_ALBUMNAME_ERROR' as const;
+const getAlbumsArtistNameAsync = createAsyncAction(
+  GET_ALBUMS_ARTISTNAME,
+  GET_ALBUMS_ARTISTNAME_SUCCESS,
+  GET_ALBUMS_ARTISTNAME_ERROR
+)<undefined, ArtistName, AxiosError>();
 
-const GET_ALBUM = 'GET_ALBUM' as const;
-const GET_ALBUM_SUCCESS = 'GET_ALBUM_SUCCESS' as const;
-const GET_ALBUM_ERROR = 'GET_ALBUM_ERROR' as const;
+type AlbumArtistNameAction = ActionType<typeof getAlbumsArtistNameAsync>;
 
-export const getAlbumsArtistName = (searchText: string) => async (dispatch) => {
-  dispatch({type: GET_ALBUMS_ARTISTNAME});
+const GET_ALBUMS_ALBUMNAME = 'GET_ALBUMS_ALBUMNAME';
+const GET_ALBUMS_ALBUMNAME_SUCCESS = 'GET_ALBUMS_ALBUMNAME_SUCCESS';
+const GET_ALBUMS_ALBUMNAME_ERROR = 'GET_ALBUMS_ALBUMNAME_ERROR';
+
+const getAlbumsAlbumNameAsync = createAsyncAction(
+  GET_ALBUMS_ALBUMNAME,
+  GET_ALBUMS_ALBUMNAME_SUCCESS,
+  GET_ALBUMS_ALBUMNAME_ERROR
+)<undefined, AlbumName, AxiosError>();
+
+type AlbumAlbumNameAction = ActionType<typeof getAlbumsAlbumNameAsync>;
+
+
+const GET_ALBUM = 'GET_ALBUM';
+const GET_ALBUM_SUCCESS = 'GET_ALBUM_SUCCESS';
+const GET_ALBUM_ERROR = 'GET_ALBUM_ERROR';
+
+export const getAlbumsArtistName = (searchText: string): ThunkAction<void, RootState, null, AlbumArtistNameAction> => async (dispatch) => {
+  const { request, success, failure } = getAlbumsArtistNameAsync;
+  dispatch(request());
   try{
     const albums = await postApi.getAlbumsArtistName(searchText);
-    dispatch({type: GET_ALBUMS_ARTISTNAME_SUCCESS, albums});
+    dispatch(success(albums));
   }
   catch(e) { 
-    dispatch({type: GET_ALBUMS_ARTISTNAME_ERROR, error: e})
+    dispatch(failure(e))
   }
 }
 
-export const getAlbumsAlbumName = (searchText: string) => async (dispatch) => {
-  dispatch({type: GET_ALBUMS_ALBUMNAME});
+export const getAlbumsAlbumName = (searchText: string): ThunkAction<void, RootState, null, AlbumAlbumNameAction> => async (dispatch) => {
+  const { request, success, failure } = getAlbumsAlbumNameAsync;
+  dispatch(request());
   try{
     const musics = await postApi.getAlbumsAlbumName(searchText);
-    dispatch({type: GET_ALBUMS_ALBUMNAME_SUCCESS, musics});
+    dispatch(success(musics));
   }
   catch(e) {
-    dispatch({type: GET_ALBUMS_ALBUMNAME_ERROR, error: e})
+    dispatch(failure(e))
   }
 }
 
