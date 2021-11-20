@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import MusicImg from './MusicImg';
 
 export default function MusicList({ musics }) {
-  if(musics.data.results.albummatches.album.length === 0) return <div className="errorMessageNoData">텅..</div>;
+  if(!musics.results.albummatches) return <div className="errorMessageNoData">텅..</div>;
 
   return (
     <>
       <h2 className="searchTitle">앨범 검색결과</h2>
       <div className="albumWrap">
-        {musics.data.results.albummatches.album.filter(album => album.image[2]['#text'] !== '').map((music) => (
+        {musics.results.albummatches.album.filter(album => album.image[2]['#text'] !== '').map((music) => (
           <div key={music.url} >
             <MusicImg music={music} />
             <p>

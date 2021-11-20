@@ -1,13 +1,12 @@
 // import * as postApi from '../api/album';
 // import { createAlbumsPromiseThunk, handleAlbumsAsyncActions, reducerUtils } from '../lib/asyncUtils';
 import { AxiosError } from 'axios';
-import { deprecated, ActionType, createReducer, createAsyncAction } from 'typesafe-actions';
+import { ActionType, createAsyncAction } from 'typesafe-actions';
 import * as postApi from '../api/album';
-import { ArtistName} from './artistNameTypes';
+import { ArtistName, Album}  from './artistNameTypes';
 import { AlbumName } from './albumNameTypes';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '.';
-const { createAction, createStandardAction } = deprecated;
 
 const GET_ALBUMS_ARTISTNAME = 'GET_ALBUMS_ARTISTNAME';
 const GET_ALBUMS_ARTISTNAME_SUCCESS = 'GET_ALBUMS_ARTISTNAME_SUCCESS';
@@ -38,14 +37,22 @@ const GET_ALBUM = 'GET_ALBUM';
 const GET_ALBUM_SUCCESS = 'GET_ALBUM_SUCCESS';
 const GET_ALBUM_ERROR = 'GET_ALBUM_ERROR';
 
+const getAlbumAsync = createAsyncAction(
+  GET_ALBUM,
+  GET_ALBUM_SUCCESS,
+  GET_ALBUM_ERROR
+)<undefined, Album | undefined, AxiosError>();
+
+type AlbumAction = ActionType<typeof getAlbumAsync>;
+
 export const getAlbumsArtistName = (searchText: string): ThunkAction<void, RootState, null, AlbumArtistNameAction> => async (dispatch) => {
   const { request, success, failure } = getAlbumsArtistNameAsync;
   dispatch(request());
   try{
-    const albums = await postApi.getAlbumsArtistName(searchText);
-    dispatch(success(albums));
+    const payload = await postApi.getAlbumsArtistName(searchText);
+    dispatch(success(payload));
   }
-  catch(e) { 
+  catch(e: any) { 
     dispatch(failure(e))
   }
 }
@@ -54,26 +61,45 @@ export const getAlbumsAlbumName = (searchText: string): ThunkAction<void, RootSt
   const { request, success, failure } = getAlbumsAlbumNameAsync;
   dispatch(request());
   try{
-    const musics = await postApi.getAlbumsAlbumName(searchText);
-    dispatch(success(musics));
+    const payload = await postApi.getAlbumsAlbumName(searchText);
+    dispatch(success(payload));
   }
-  catch(e) {
+  catch(e: any) {
     dispatch(failure(e))
   }
 }
 
-export const getAlbum = (url: string) => async (dispatch) => {
-  dispatch({type: GET_ALBUM});
-  try{
-    const album = await postApi.getAlbum(url);
-    dispatch({type: GET_ALBUM_SUCCESS, album});
+export const getAlbum = (url: string): ThunkAction<void, RootState, null, AlbumAction> => async (dispatch) => {
+  const { request, success, failure } = getAlbumAsync;
+  dispatch(request());
+  try {
+    const payload = await postApi.getAlbum(url);
+    dispatch(success(payload))
   }
-  catch(e) {
-    dispatch({type: GET_ALBUM_ERROR, error: e})
+  catch (e: any) {
+    dispatch(failure(e))
   }
 }
 
-const initialState = {
+type AlbumState = {
+  albums: {
+    loading: boolean;
+    data: ArtistName | null;
+    error: Error | null;
+  },
+  musics: {
+    loading: boolean;
+    data: AlbumName | null;
+    error: Error | null;
+  },
+  album: {
+    loading: boolean;
+    data: Album | null;
+    error: Error | null;
+  }
+}
+
+const initialState: AlbumState = {
   albums: {
     loading: false,
     data: null,
@@ -91,7 +117,7 @@ const initialState = {
   }
 }
 
-export default function albums(state = initialState, action) {
+export default function albums(state: AlbumState = initialState, action: AlbumArtistNameAction | AlbumAlbumNameAction | AlbumAction) {
   switch(action.type) {
     case GET_ALBUMS_ARTISTNAME:
       return{
@@ -107,7 +133,7 @@ export default function albums(state = initialState, action) {
         ...state,
         albums: {
           loading: false,
-          data: action.albums,
+          data: action.payload,
           error: null
         }
       }
@@ -117,7 +143,7 @@ export default function albums(state = initialState, action) {
         albums: {
           loading: false,
           data: null,
-          error: action.error
+          error: action.payload
         }
       }
     case GET_ALBUMS_ALBUMNAME:
@@ -134,7 +160,7 @@ export default function albums(state = initialState, action) {
         ...state,
         musics: {
           loading: false,
-          data: action.musics,
+          data: action.payload,
           error: null
         }
       }
@@ -144,7 +170,7 @@ export default function albums(state = initialState, action) {
         musics: {
           loading: false,
           data: null,
-          error: action.error
+          error: action.payload
         }
       }
     case GET_ALBUM:
@@ -161,7 +187,7 @@ export default function albums(state = initialState, action) {
         ...state,
         album: {
           loading: false,
-          data : action.album,
+          data : action.payload,
           error: null
         }
       }
@@ -171,7 +197,7 @@ export default function albums(state = initialState, action) {
         album: {
           loading: false,
           data: null,
-          error: action.error
+          error: action.payload
         }
       }
     default:
