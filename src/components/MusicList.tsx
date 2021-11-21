@@ -2,8 +2,13 @@ import React from 'react'
 import '../App.css';
 import { Link } from 'react-router-dom';
 import MusicImg from './MusicImg';
+import { AlbumName } from '../modules/albumNameTypes';
 
-export default function MusicList({ musics }) {
+type MusicListProps = {
+  musics: AlbumName;
+}
+
+export default function MusicList({ musics }: MusicListProps) {
   if(!musics.results.albummatches) return <div className="errorMessageNoData">텅..</div>;
 
   return (

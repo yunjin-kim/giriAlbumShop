@@ -6,8 +6,8 @@ import { RootState } from '../modules';
 
 //앨범 이름으로 검색
 export default function MusicListContainer() {
-  const { loading, data, error } = useSelector(state => state.albums.musics);
-  const searchText = useSelector(state => state.search)
+  const { loading, data, error } = useSelector((state: RootState) => state.albums.musics);
+  const searchText = useSelector((state: RootState) => state.search)
   const dispatch = useDispatch();
   
   useEffect(() => {
