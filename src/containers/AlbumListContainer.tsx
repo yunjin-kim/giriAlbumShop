@@ -7,8 +7,10 @@ import "../App.css";
 
 //아티스트 이름으로 검색
 export default function AlbumListContainer() {
-  const { loading, data, error } = useSelector(state => state.albums.albums);
-  const saerchText = useSelector(state => state.search)
+  // const { loading, data, error } = useSelector((state: RootState) => state.albums.albums);
+  const { loading, data, error } = useSelector((state: RootState) => state.albums.albums);
+  // console.log(albums.albums.data)
+  const saerchText = useSelector((state: RootState) => state.search)
   const dispatch = useDispatch();
 
   useEffect(()=>{

@@ -2,9 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import AlbumImg from './AlbumImg';
 import '../App.css';
+import { ArtistName } from '../modules/artistNameTypes';
 
-export default function AlbumList({ albums }) {  
-  if(albums.topalbums.error) return <div className="errorMessageNoData">텅..</div>;
+type AlbumListProps = {
+  albums: ArtistName;
+}
+
+export default function AlbumList({ albums }: AlbumListProps) {  
+  if(!albums.topalbums) return <div className="errorMessageNoData">텅..</div>;
 
   return (
     <>

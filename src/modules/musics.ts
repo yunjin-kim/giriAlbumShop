@@ -1,5 +1,3 @@
-// import * as postApi from '../api/album';
-// import { createAlbumsPromiseThunk, handleAlbumsAsyncActions, reducerUtils } from '../lib/asyncUtils';
 import { AxiosError } from 'axios';
 import { ActionType, createAsyncAction } from 'typesafe-actions';
 import * as postApi from '../api/album';
@@ -41,7 +39,7 @@ const getAlbumAsync = createAsyncAction(
   GET_ALBUM,
   GET_ALBUM_SUCCESS,
   GET_ALBUM_ERROR
-)<undefined, Album | undefined, AxiosError>();
+)<undefined, Album, AxiosError>();
 
 type AlbumAction = ActionType<typeof getAlbumAsync>;
 

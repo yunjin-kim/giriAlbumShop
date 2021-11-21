@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import  { getAlbumsAlbumName } from '../modules/musics';
 import MusicList from '../components/MusicList';
+import { RootState } from '../modules';
 
 //앨범 이름으로 검색
 export default function MusicListContainer() {

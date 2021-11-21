@@ -9,22 +9,22 @@ export default function MusicContainer({url}) {
   const cartAlbum = useSelector(state => state.cart);
   const dispatch = useDispatch();
 
-  useEffect(()=> {
+  useEffect(() => {
     dispatch(getAlbum(url));
     // return () => {
     //   clearAlbum();
     // }
-  },[dispatch, url])
+  }, [dispatch, url])
 
-  const onAddAlbum = album => dispatch(addAlbumCart(album))
+  const onAddAlbum = album => dispatch(addAlbumCart(album));
 
-  if(loading && !data) return <div>로딩</div>
+  if(loading && !data) return <div>로딩</div>;
   if(error) return null; //getAlbum이 url아 바뀌면 실행되기 때문에 cart 페이지 갈때도 실행된다 그래서 오류 null하는게 맞는가?
   if(!data) return null;
 
   return (
     <>
-      <Music album={data} onAddAlbum={onAddAlbum} cartAlbum={cartAlbum} />
+      <Music album={ data } onAddAlbum={ onAddAlbum } cartAlbum={ cartAlbum } />
     </>
   )
 }

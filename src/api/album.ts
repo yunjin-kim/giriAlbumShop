@@ -1,19 +1,18 @@
 import axios from "axios";
 import { AlbumName } from "../modules/albumNameTypes";
-import { ArtistName } from "../modules/artistNameTypes";
+import {  ArtistName } from "../modules/artistNameTypes";
 
-export const getAlbumsArtistName = async (searchText: string) => {
+export const getAlbumsArtistName = async (searchText: string): Promise<ArtistName> => {
   const albums = await axios.get<ArtistName>(`http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${searchText}&api_key=4eaa2e6cafb967fa096e6d2e3dec0344&format=json`);
   return albums.data;
 }
 
-
-export const getAlbumsAlbumName = async (searchText: string) => {
+export const getAlbumsAlbumName = async (searchText: string): Promise<AlbumName> => {
   const musics = await axios.get<AlbumName>(`http://ws.audioscrobbler.com/2.0/?method=album.search&album=${searchText}&api_key=4eaa2e6cafb967fa096e6d2e3dec0344&format=json`);
   return musics.data;
 }
-
-export const getAlbum = async(url: any) => {
+// <Album | undefined> 하면 payload 에서 오류 나서 any로 보류
+export const getAlbum = async (url: any): Promise<any> => {
   const urlArtist = url.match(/.+(?=:)/gm)[0];
   const urlAlumName = url.match(/(?<=:)[^]+/gm)[0];
   const albums = await axios.get<ArtistName>(`http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${urlArtist}&api_key=4eaa2e6cafb967fa096e6d2e3dec0344&format=json`);

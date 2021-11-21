@@ -10,7 +10,7 @@ type SearchAction =
 
 type SearchState = string;
 
-const initialState = "기리보이";
+const initialState: SearchState = "기리보이";
 
 export default function search(state:SearchState = initialState, action: SearchAction) {
   switch(action.type){
