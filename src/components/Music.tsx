@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import AddCartModal from './AddCartModal';
 import '../App.css';
+import { Album } from '../modules/artistNameTypes';
 
-export default function Music({ album, onAddAlbum, cartAlbum }) {
+type MusicProps = {
+  album: Album;
+  onAddAlbum: (album: Album) => void;
+  cartAlbum: Album[] | []
+}
+
+export default function Music({ album, onAddAlbum, cartAlbum }: MusicProps) {
   const [addModal, setAddModal] = useState(false);
 
   const addCart = () => {
@@ -11,7 +18,7 @@ export default function Music({ album, onAddAlbum, cartAlbum }) {
     return cartAlbum.length <= 0 
       ?  onAddAlbum(album)
       : cartAlbum.find((cartEachAlbum) => (
-          cartEachAlbum.album.name === album.name))
+          cartEachAlbum.name === album.name)) //cartEachAlbum.album.name
           ?  null
           : onAddAlbum(album);
   }
@@ -28,7 +35,7 @@ export default function Music({ album, onAddAlbum, cartAlbum }) {
     <div className="detailPageWrap">
       <img className="eachAlbumImg" src={album.image[2]['#text']} alt="앨범 이미지" />
       <p>{album.name} / {album.artist.name}</p>
-      <p>가격: {album.playcount*10}원</p>
+      <p>가격: {album.playcount * 10}원</p>
       <button className="cartBtn" onClick={addCart}>장바구니 담기</button>
       {
         addModal ?
