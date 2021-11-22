@@ -3,9 +3,10 @@ import CartContainer from '../containers/CartContainer'
 import "../App.css";
 import { useSelector } from 'react-redux';
 import CartPayContainer from '../containers/CartPayContainer';
+import { RootState } from '../modules';
 
 export default function CartPage() {
-  const album = useSelector(state => state.cart);
+  const album = useSelector((state: RootState) => state.cart);
 
   return (
     <>
