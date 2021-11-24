@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import AddCartModal from './AddCartModal';
 import '../App.css';
-import { Album } from '../modules/artistNameTypes';
+import { ArtAlbum } from '../modules/artistNameTypes';
+import { AlbumAlbum } from '../modules/albumNameTypes';
 
 type MusicProps = {
-  album: Album;
-  onAddAlbum: (album: Album) => void;
-  cartAlbum: Album[] | []
+  album: ArtAlbum;
+  onAddAlbum: (album: ArtAlbum) => void;
+  cartAlbum: AlbumAlbum[];
 }
 
 export default function Music({ album, onAddAlbum, cartAlbum }: MusicProps) {
@@ -17,7 +18,7 @@ export default function Music({ album, onAddAlbum, cartAlbum }: MusicProps) {
 
     return cartAlbum.length <= 0 
       ?  onAddAlbum(album)
-      : cartAlbum.find((cartEachAlbum) => (
+      : cartAlbum.find((cartEachAlbum: AlbumAlbum) => (
           cartEachAlbum.name === album.name)) //cartEachAlbum.album.name
           ?  null
           : onAddAlbum(album);

@@ -1,11 +1,10 @@
-<p align="middle">React & Redux 앨범 장바구니 애플리케이션</p>
+<p align="middle">React & Redux & TypeScript 앨범 장바구니 애플리케이션</p>
 </p>
 
-## 다수의 컴포넌트를 페이지로 구성하고 복잡해진 상태를 관리합니다
 
 ## 페이지 구성
 
-- 검색
+- 앨범 검색
 - 장바구니
 - 주문/결제
 - 상품 목록

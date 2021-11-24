@@ -16,16 +16,18 @@ export interface Attr {
 }
 
 export interface Albummatches {
-  album: Album[];
+  album: AlbumAlbum[];
 }
 
-export interface Album {
+export interface AlbumAlbum {
   name:       string;
   artist:     string;
   url:        string;
   image:      Image[];
   streamable: string;
   mbid:       string;
+  count:     number;
+  check:     boolean;
 }
 
 export interface Image {

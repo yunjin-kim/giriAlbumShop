@@ -12,7 +12,7 @@ export default function CartPage() {
     <>
       <CartContainer />
       {
-        album.length > 0
+        album
         ? <CartPayContainer />
         : <div className="errorMessageNoData">텅..</div>
       }

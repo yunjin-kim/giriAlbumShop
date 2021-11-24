@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios';
 import { ActionType, createAsyncAction } from 'typesafe-actions';
 import * as postApi from '../api/album';
-import { ArtistName, Album}  from './artistNameTypes';
+import { ArtistName, ArtAlbum }  from './artistNameTypes';
 import { AlbumName } from './albumNameTypes';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '.';
@@ -39,7 +39,7 @@ const getAlbumAsync = createAsyncAction(
   GET_ALBUM,
   GET_ALBUM_SUCCESS,
   GET_ALBUM_ERROR
-)<undefined, Album, AxiosError>();
+)<undefined, ArtAlbum, AxiosError>();
 
 type AlbumAction = ActionType<typeof getAlbumAsync>;
 
@@ -92,7 +92,7 @@ type AlbumState = {
   },
   album: {
     loading: boolean;
-    data: Album | null;
+    data: ArtAlbum | null;
     error: Error | null;
   }
 }

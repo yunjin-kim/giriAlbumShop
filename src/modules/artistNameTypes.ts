@@ -3,7 +3,7 @@ export interface ArtistName {
 }
 
 export interface Topalbums {
-  album:   Album[];
+  album:   ArtAlbum[];
   "@attr": Attr;
 }
 
@@ -19,12 +19,16 @@ export enum ArtistEnum {
   기리보이 = "기리보이",
 }
 
-export interface Album {
+export interface ArtAlbum {
   name:      string;
   playcount: number;
   url:       string;
   artist:    ArtistClass;
   image:     Image[];
+  count:     number;
+  check:     boolean;
+  // streamable?: string;
+  // mbid?:       string;
 }
 
 export interface ArtistClass {
