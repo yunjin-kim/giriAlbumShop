@@ -3,33 +3,39 @@ import AddCartModal from './AddCartModal';
 import '../App.css';
 import { ArtAlbum } from '../modules/artistNameTypes';
 import { AlbumAlbum } from '../modules/albumNameTypes';
+import ExistAlbumOnCart from './ExistAlbumOnCart';
 
-type MusicProps = {
-  album: ArtAlbum;
-  onAddAlbum: (album: ArtAlbum) => void;
-  cartAlbum: AlbumAlbum[];
-}
+// type MusicProps = {
+//   album: ArtAlbum;
+//   onAddAlbum: (album: ArtAlbum) => void;
+//   cartAlbum: AlbumAlbum[];
+// }
 
-export default function Music({ album, onAddAlbum, cartAlbum }: MusicProps) {
+export default function Music({ album, onAddAlbum, cartAlbum }) {
   const [addModal, setAddModal] = useState(false);
+  const [existCart, setExistCart] = useState(false);
 
   const addCart = () => {
     setAddModal(true);
 
     return cartAlbum.length <= 0 
       ?  onAddAlbum(album)
-      : cartAlbum.find((cartEachAlbum: AlbumAlbum) => (
-          cartEachAlbum.name === album.name)) //cartEachAlbum.album.name
-          ?  null
+      : cartAlbum.find((cartEachAlbum) => (
+          cartEachAlbum.album.name === album.name))
+          ? setExistCart(true)
           : onAddAlbum(album);
   }
 
   setTimeout(() => {
     setAddModal(false);
+    setExistCart(false);
   }, 2000)
 
   useEffect(() => {
-    return () => setAddModal(false)
+    return () => {
+      setAddModal(false)
+      setExistCart(false)
+    }
   }, [])
 
   return (
@@ -39,8 +45,13 @@ export default function Music({ album, onAddAlbum, cartAlbum }: MusicProps) {
       <p>가격: {album.playcount * 10}원</p>
       <button className="cartBtn" onClick={addCart}>장바구니 담기</button>
       {
-        addModal ?
+        addModal && !existCart ?
         <AddCartModal />
+        : null
+      }
+      {
+        existCart ? 
+        <ExistAlbumOnCart />
         : null
       }
     </div>
