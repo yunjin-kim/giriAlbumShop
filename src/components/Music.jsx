@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AddCartModal from './AddCartModal';
-import '../App.css';
-import { ArtAlbum } from '../modules/artistNameTypes';
-import { AlbumAlbum } from '../modules/albumNameTypes';
 import ExistAlbumOnCart from './ExistAlbumOnCart';
+import '../App.css';
 
 // type MusicProps = {
 //   album: ArtAlbum;
