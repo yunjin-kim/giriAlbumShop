@@ -1,6 +1,6 @@
 import axios from "axios";
 import { AlbumName } from "../modules/albumNameTypes";
-import {  ArtistName } from "../modules/artistNameTypes";
+import {  ArtAlbum, ArtistName } from "../modules/artistNameTypes";
 
 export const getAlbumsArtistName = async (searchText: string): Promise<ArtistName> => {
   const albums = await axios.get<ArtistName>(`http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${searchText}&api_key=4eaa2e6cafb967fa096e6d2e3dec0344&format=json`);

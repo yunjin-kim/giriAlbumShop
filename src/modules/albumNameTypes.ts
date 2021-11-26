@@ -30,6 +30,17 @@ export interface AlbumAlbum {
   check:     boolean;
 }
 
+// export interface InnerAlbum {
+//   name:       string;
+//   artist:     string;
+//   url:        string;
+//   image:      Image[];
+//   streamable: string;
+//   mbid:       string;
+//   count:     number;
+//   check:     boolean;
+// }
+
 export interface Image {
   "#text": string;
   size:    Size;

@@ -3,14 +3,16 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 import MusicImg from './MusicImg';
 import { AlbumName } from '../modules/albumNameTypes';
+import { ArtistName } from '../modules/artistNameTypes';
 
 type MusicListProps = {
   musics: AlbumName;
 }
 
 export default function MusicList({ musics }: MusicListProps) {
-  if(!musics.results.albummatches) return <div className="errorMessageNoData">텅..</div>;
+  console.log(musics)
 
+  if(!musics.results.albummatches.album) return <div className="errorMessageNoData">텅..</div>;
   return (
     <>
       <h2 className="searchTitle">앨범 검색결과</h2>
