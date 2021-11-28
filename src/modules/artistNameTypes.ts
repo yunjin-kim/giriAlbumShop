@@ -8,7 +8,7 @@ export interface Topalbums {
 }
 
 export interface Attr {
-  artist:     ArtistEnum;
+  artist:     string;
   page:       string;
   perPage:    string;
   totalPages: string;
@@ -27,12 +27,10 @@ export interface ArtAlbum {
   image:     Image[];
   count:     number;
   check:     boolean;
-  // streamable?: string;
-  // mbid?:       string;
 }
 
 export interface ArtistClass {
-  name: ArtistEnum;
+  name: string;
   url:  string;
 }
 

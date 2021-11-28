@@ -2,7 +2,7 @@ import { AxiosError } from 'axios';
 import { ActionType, createAsyncAction } from 'typesafe-actions';
 import * as postApi from '../api/album';
 import { ArtistName, ArtAlbum }  from './artistNameTypes';
-import { AlbumName } from './albumNameTypes';
+import { AlbumAlbum, AlbumName } from './albumNameTypes';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '.';
 import { reducerUtils } from '../lib/asyncUtils';
@@ -40,7 +40,7 @@ const getAlbumAsync = createAsyncAction(
   GET_ALBUM,
   GET_ALBUM_SUCCESS,
   GET_ALBUM_ERROR
-)<undefined, ArtAlbum, AxiosError>();
+)<undefined, ArtAlbum | AlbumAlbum, AxiosError>();
 
 type AlbumAction = ActionType<typeof getAlbumAsync>;
 
@@ -104,7 +104,7 @@ const initialState: AlbumState = {
   album: reducerUtils.initial()
 }
 
-export default function albums(state: AlbumState = initialState, action: AlbumArtistNameAction | AlbumAlbumNameAction | AlbumAction, keepData = false) {
+export default function albums(state: AlbumState = initialState, action: AlbumArtistNameAction | AlbumAlbumNameAction | AlbumAction) {
   switch(action.type) {
     case GET_ALBUMS_ARTISTNAME:
       return{

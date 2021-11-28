@@ -1,3 +1,5 @@
+import { ArtistClass } from "./artistNameTypes";
+
 export interface AlbumName {
   results: Results;
 }
@@ -21,13 +23,14 @@ export interface Albummatches {
 
 export interface AlbumAlbum {
   name:       string;
-  artist:     string;
+  artist:     ArtistClass;
   url:        string;
   image:      Image[];
   streamable: string;
   mbid:       string;
-  count:     number;
-  check:     boolean;
+  count:      number;
+  check:      boolean;
+  playcount: number;
 }
 
 // export interface InnerAlbum {

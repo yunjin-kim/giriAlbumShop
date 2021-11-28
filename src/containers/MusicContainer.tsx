@@ -23,7 +23,7 @@ export default function MusicContainer({ url }: MusicContainerProps) {
     // }
   }, [dispatch, url])
 
-  const onAddAlbum = (album: any) => dispatch(addAlbumCart(album));
+  const onAddAlbum = (album: AlbumAlbum | ArtAlbum) => dispatch(addAlbumCart(album));
 
   if(loading && !data) return <div>로딩</div>;
   if(error) return null; //getAlbum이 url아 바뀌면 실행되기 때문에 cart 페이지 갈때도 실행된다 그래서 오류 null하는게 맞는가?

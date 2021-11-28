@@ -17,5 +17,5 @@ export const getAlbum = async (url: any): Promise<any> => {
   const urlAlumName = url.match(/(?<=:)[^]+/gm)[0];
   const albums = await axios.get<ArtistName>(`http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${urlArtist}&api_key=4eaa2e6cafb967fa096e6d2e3dec0344&format=json`);
   const album = albums.data.topalbums.album.find(data => data.name === urlAlumName);
-  return album;
+  return [album]; // Objects are not valid as a React child (found: object with keys {name, url}). If you meant to render a collection of children, use an array instead.
 }
