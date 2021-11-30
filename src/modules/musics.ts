@@ -6,6 +6,7 @@ import { AlbumAlbum, AlbumName } from './albumNameTypes';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '.';
 import { reducerUtils } from '../lib/asyncUtils';
+import { handleAlbumsAsyncActions } from '../lib/asyncUtils';
 
 const GET_ALBUMS_ARTISTNAME = 'GET_ALBUMS_ARTISTNAME';
 const GET_ALBUMS_ARTISTNAME_SUCCESS = 'GET_ALBUMS_ARTISTNAME_SUCCESS';
@@ -44,7 +45,7 @@ const getAlbumAsync = createAsyncAction(
 
 type AlbumAction = ActionType<typeof getAlbumAsync>;
 
-export const getAlbumsArtistName = (searchText: string): ThunkAction<void, RootState, null, AlbumArtistNameAction> => async (dispatch) => {
+export const getAlbumsArtistName = (searchText: string): ThunkAction<void, RootState, any, AlbumArtistNameAction> => async (dispatch) => {
   const { request, success, failure } = getAlbumsArtistNameAsync;
   dispatch(request());
   try{
@@ -107,35 +108,15 @@ const initialState: AlbumState = {
 export default function albums(state: AlbumState = initialState, action: AlbumArtistNameAction | AlbumAlbumNameAction | AlbumAction) {
   switch(action.type) {
     case GET_ALBUMS_ARTISTNAME:
-      return{
-        ...state,
-        albums: reducerUtils.loading()
-      }
     case GET_ALBUMS_ARTISTNAME_SUCCESS:
-      return{
-        ...state,
-        albums: reducerUtils.success(action.payload)
-      }
     case GET_ALBUMS_ARTISTNAME_ERROR:
-      return{
-        ...state,
-        albums: reducerUtils.error(action.payload)
-      }
+      const artAlbumHandler = handleAlbumsAsyncActions(GET_ALBUMS_ARTISTNAME, 'albums', true);
+      return artAlbumHandler(state, action);
     case GET_ALBUMS_ALBUMNAME:
-      return{
-        ...state,
-        musics: reducerUtils.loading()
-      }
     case GET_ALBUMS_ALBUMNAME_SUCCESS:
-      return{
-        ...state,
-        musics: reducerUtils.success(action.payload)
-      }
     case GET_ALBUMS_ALBUMNAME_ERROR:
-      return{
-        ...state,
-        musics: reducerUtils.error(action.payload)
-      }
+      const albumAlbumHandler = handleAlbumsAsyncActions(GET_ALBUMS_ALBUMNAME, 'musics', true);
+      return albumAlbumHandler(state, action);
     case GET_ALBUM:
       return{
         ...state,
