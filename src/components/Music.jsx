@@ -5,13 +5,13 @@ import { ArtAlbum } from '../modules/artistNameTypes';
 import { AlbumAlbum } from '../modules/albumNameTypes';
 import '../App.css';
 
-type MusicProps = {
-  album: [ArtAlbum] | [AlbumAlbum];
-  cartAlbum: (AlbumAlbum | ArtAlbum)[];
-  onAddAlbum: (album: ArtAlbum | AlbumAlbum) => void;
-}
+// type MusicProps = {
+//   album: [ArtAlbum] | [AlbumAlbum];
+//   cartAlbum: (AlbumAlbum | ArtAlbum)[];
+//   onAddAlbum: (album: ArtAlbum | AlbumAlbum) => void;
+// }
 
-export default function Music({ album, onAddAlbum, cartAlbum }: MusicProps) {
+export default function Music({ album, onAddAlbum, cartAlbum }) {
   const [addModal, setAddModal] = useState(false);
   const [existCart, setExistCart] = useState(false);
 
@@ -21,7 +21,7 @@ export default function Music({ album, onAddAlbum, cartAlbum }: MusicProps) {
     return cartAlbum.length <= 0 
       ?  onAddAlbum(album[0])
       : cartAlbum.find((cartEachAlbum) => (
-          cartEachAlbum.name === album[0].name)) //cartEachAlbum.album.name
+          cartEachAlbum.album.name === album[0].name)) //cartEachAlbum.album.name
           ? setExistCart(true)
           : onAddAlbum(album[0]);
   }
