@@ -2,9 +2,10 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../App.css';
+import { RootState } from '../modules';
 
 export default function NavBar() {
-  const cartAlbum = useSelector(state => state.cart);
+  const cartAlbum = useSelector((state: RootState) => state.cart);
   
   return (
     <div className="navBar">
