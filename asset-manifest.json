@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/giriAlbumShop/static/css/main.36ab292a.chunk.css",
+    "main.js": "/giriAlbumShop/static/js/main.3be15d7c.chunk.js",
+    "main.js.map": "/giriAlbumShop/static/js/main.3be15d7c.chunk.js.map",
+    "runtime-main.js": "/giriAlbumShop/static/js/runtime-main.95c963bd.js",
+    "runtime-main.js.map": "/giriAlbumShop/static/js/runtime-main.95c963bd.js.map",
+    "static/css/2.6ef2fac9.chunk.css": "/giriAlbumShop/static/css/2.6ef2fac9.chunk.css",
+    "static/js/2.e0610a0c.chunk.js": "/giriAlbumShop/static/js/2.e0610a0c.chunk.js",
+    "static/js/2.e0610a0c.chunk.js.map": "/giriAlbumShop/static/js/2.e0610a0c.chunk.js.map",
+    "static/js/3.c4c75979.chunk.js": "/giriAlbumShop/static/js/3.c4c75979.chunk.js",
+    "static/js/3.c4c75979.chunk.js.map": "/giriAlbumShop/static/js/3.c4c75979.chunk.js.map",
+    "index.html": "/giriAlbumShop/index.html",
+    "static/css/2.6ef2fac9.chunk.css.map": "/giriAlbumShop/static/css/2.6ef2fac9.chunk.css.map",
+    "static/css/main.36ab292a.chunk.css.map": "/giriAlbumShop/static/css/main.36ab292a.chunk.css.map",
+    "static/js/2.e0610a0c.chunk.js.LICENSE.txt": "/giriAlbumShop/static/js/2.e0610a0c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.95c963bd.js",
+    "static/css/2.6ef2fac9.chunk.css",
+    "static/js/2.e0610a0c.chunk.js",
+    "static/css/main.36ab292a.chunk.css",
+    "static/js/main.3be15d7c.chunk.js"
+  ]
+}
